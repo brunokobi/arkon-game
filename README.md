@@ -1,10 +1,12 @@
 <div align="center">
 
-![Arkon: A Queda de Kobi](docs/cover.png)
+![Arkon: A Fenda do Aglomerado](docs/cover.png)
 
 # Arkon: A Fenda do Aglomerado
 
 > Browser game multiplayer 2D top-down — sátira política brasileira com alma nórdica/grega/romana.
+
+📖 **[Ler o livro — ARKON Completo](docs/ARKON-Completo.pdf)**
 
 </div>
 
