@@ -24,27 +24,27 @@
   pointer-events: none;
 }
 
-/* Layer 1 — imagem do mundo, movimento lento */
+/* Layer 1 — imagem do mundo, sem blur para preservar qualidade */
 .ls-bg {
   inset: -12%;
   background: url('/assets/world-bg.png') center 40% / cover no-repeat;
-  filter: brightness(0.3) saturate(1.2) blur(2px);
+  filter: brightness(0.55) saturate(1.1);
   will-change: transform;
   transform-origin: center center;
 }
 
-/* Layer 2 — overlay de atmosfera: topo escuro, split lateral quente/frio, brilho central */
+/* Layer 2 — overlay escuro sobre a imagem nítida, mantém legibilidade */
 .ls-mid {
   will-change: transform;
   background:
-    /* escurece o topo para suprimir texto da capa */
-    linear-gradient(to bottom, rgba(5,5,9,0.75) 0%, transparent 35%),
-    /* brilho do tridente no centro */
-    radial-gradient(ellipse 30% 50% at 50% 42%, rgba(100, 180, 255, 0.18) 0%, transparent 65%),
+    /* camada escura geral para contraste do card */
+    rgba(5, 5, 9, 0.42),
+    /* brilho central do tridente */
+    radial-gradient(ellipse 30% 50% at 50% 42%, rgba(100, 180, 255, 0.1) 0%, transparent 65%),
     /* atmosfera quente (Skálholm) à esquerda */
-    radial-gradient(ellipse 50% 80% at 12% 60%, rgba(200, 55, 8, 0.22) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 80% at 12% 60%, rgba(200, 55, 8, 0.12) 0%, transparent 65%),
     /* atmosfera fria (Aetherion) à direita */
-    radial-gradient(ellipse 50% 80% at 88% 60%, rgba(15, 75, 190, 0.2) 0%, transparent 65%);
+    radial-gradient(ellipse 50% 80% at 88% 60%, rgba(15, 75, 190, 0.12) 0%, transparent 65%);
 }
 
 /* Layer 3 — partículas (não parallax, animadas por CSS) */
