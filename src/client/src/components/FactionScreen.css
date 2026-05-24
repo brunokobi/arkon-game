@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&display=swap');
+
+.fs-root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #050509;
+  font-family: 'Cinzel', serif;
+}
+
+.fs-bg {
+  position: absolute;
+  inset: -8%;
+  background: url('/assets/world-bg.png') center 35% / cover no-repeat;
+  filter: brightness(0.38) saturate(1.1);
+  will-change: transform;
+}
+.fs-overlay  { position: absolute; inset: 0; background: rgba(5,5,9,0.55); pointer-events: none; }
+.fs-vignette {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 120% 45% at 50% 100%, rgba(5,5,9,0.97) 0%, transparent 55%),
+    radial-gradient(ellipse 120% 30% at 50% 0%,   rgba(5,5,9,0.82) 0%, transparent 50%);
+}
+.fs-scanlines {
+  position: absolute; inset: 0; z-index: 60; pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+}
+
+/* ── Header ── */
+.fs-header {
+  position: relative; z-index: 20; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 28px;
+  border-bottom: 1px solid rgba(201,168,76,0.12);
+  background: rgba(5,5,9,0.65); backdrop-filter: blur(8px);
+}
+.fs-back {
+  background: none; border: none; cursor: pointer;
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 2px;
+  color: rgba(201,168,76,0.45); transition: color 0.2s; width: 140px;
+}
+.fs-back:hover { color: rgba(201,168,76,0.85); }
+.fs-header-logo { display: flex; align-items: center; gap: 10px; }
+.fs-logo-sigil {
+  font-size: 18px; color: #c9a84c;
+  text-shadow: 0 0 12px rgba(201,168,76,0.7);
+}
+.fs-logo-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 17px; color: #c9a84c; letter-spacing: 5px;
+  text-shadow: 0 0 18px rgba(201,168,76,0.3);
+}
+.fs-header-status { width: 140px; display: flex; justify-content: flex-end; }
+.fs-current-badge {
+  font-size: 9px; letter-spacing: 2px; padding: 4px 10px;
+  border: 1px solid; background: rgba(5,5,9,0.6);
+}
+.fs-current-badge--none { color: rgba(160,160,176,0.5); border-color: rgba(160,160,176,0.2); }
+
+/* ── Seletor ── */
+.fs-selector {
+  position: relative; z-index: 20; flex-shrink: 0;
+  display: flex; border-bottom: 1px solid rgba(201,168,76,0.1);
+  background: rgba(5,5,9,0.5); backdrop-filter: blur(6px);
+}
+.fs-tab {
+  flex: 1; padding: 14px 16px;
+  background: transparent; border: none; border-bottom: 2px solid transparent;
+  cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px;
+  color: rgba(232,224,204,0.45); transition: all 0.2s;
+  border-right: 1px solid rgba(201,168,76,0.08);
+}
+.fs-tab:last-child { border-right: none; }
+.fs-tab:hover { background: var(--fc-dim); color: rgba(232,224,204,0.8); }
+.fs-tab--active {
+  background: var(--fc-dim) !important;
+  border-bottom-color: var(--fc) !important;
+  color: var(--fc) !important;
+}
+.fs-tab-rune { font-size: 16px; }
+.fs-tab-name { font-weight: 600; }
+.fs-tab-you  { font-size: 8px; letter-spacing: 2px; color: var(--fc); opacity: 0.8; }
+.fs-tab--member .fs-tab-name { color: var(--fc); }
+
+/* ── Detail ── */
+.fs-detail {
+  position: relative; z-index: 20; flex: 1; overflow-y: auto;
+  animation: fsSlideIn 0.25s ease;
+}
+@keyframes fsSlideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fs-detail-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; min-height: 100%;
+}
+
+/* ── Colunas ── */
+.fs-col-left, .fs-col-right {
+  padding: 28px 32px;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.fs-col-left  { border-right: 1px solid rgba(201,168,76,0.08); }
+
+/* ── Cabeçalho da facção ── */
+.fs-faction-header {
+  display: flex; align-items: center; gap: 16px;
+  padding: 18px 20px;
+  background: var(--fc-dim);
+  border: 1px solid var(--fc-border);
+  position: relative;
+}
+.fs-faction-rune {
+  font-size: 36px; color: var(--fc);
+  text-shadow: 0 0 20px var(--fc); flex-shrink: 0;
+}
+.fs-faction-name {
+  font-size: 18px; letter-spacing: 3px; color: var(--fc); font-weight: 700;
+}
+.fs-faction-god {
+  font-size: 10px; letter-spacing: 1px;
+  color: rgba(232,224,204,0.5); margin-top: 3px;
+}
+.fs-faction-god em { font-style: normal; color: rgba(232,224,204,0.35); }
+.fs-member-tag {
+  position: absolute; top: 10px; right: 12px;
+  font-size: 8px; letter-spacing: 2px; color: var(--fc);
+  border: 1px solid var(--fc-border); padding: 2px 8px;
+  background: rgba(5,5,9,0.7);
+}
+
+.fs-tagline {
+  font-size: 12px; font-style: italic; letter-spacing: 1px;
+  color: rgba(201,168,76,0.55); quotes: none;
+  border-left: 2px solid rgba(201,168,76,0.2); padding-left: 14px;
+}
+.fs-desc {
+  font-size: 11px; line-height: 1.8; letter-spacing: 0.5px;
+  color: rgba(232,224,204,0.55);
+}
+
+/* Stats */
+.fs-stats {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px; padding: 16px;
+  background: rgba(5,5,9,0.5); border: 1px solid rgba(201,168,76,0.12);
+}
+.fs-stat { display: flex; flex-direction: column; gap: 3px; }
+.fs-stat span { font-size: 8px; letter-spacing: 2px; color: rgba(201,168,76,0.45); }
+.fs-stat strong { font-size: 13px; color: #e8e0cc; }
+
+/* NPCs */
+.fs-section-title {
+  font-size: 9px; letter-spacing: 3px; color: rgba(201,168,76,0.5);
+  border-bottom: 1px solid rgba(201,168,76,0.1); padding-bottom: 8px;
+  margin-bottom: -4px;
+}
+.fs-npcs { display: flex; flex-direction: column; gap: 10px; }
+.fs-npc {
+  display: flex; flex-direction: column; gap: 3px;
+  padding: 10px 14px; background: rgba(5,5,9,0.5);
+  border-left: 2px solid rgba(201,168,76,0.15);
+}
+.fs-npc-name { font-size: 12px; letter-spacing: 2px; font-weight: 600; }
+.fs-npc-role { font-size: 10px; letter-spacing: 0.5px; color: rgba(232,224,204,0.45); }
+
+/* Ranks */
+.fs-ranks { display: flex; flex-direction: column; gap: 10px; }
+.fs-rank {
+  padding: 14px 16px;
+  background: rgba(5,5,9,0.55);
+  border: 1px solid rgba(201,168,76,0.1);
+  border-left: 3px solid transparent;
+  display: flex; flex-direction: column; gap: 6px;
+  transition: border-left-color 0.2s;
+}
+.fs-rank--cupula { border-left-color: var(--fc-border); }
+.fs-rank--yours  { background: var(--fc-dim); border-color: var(--fc-border); border-left-color: var(--fc); }
+
+.fs-rank-header { display: flex; justify-content: space-between; align-items: flex-start; }
+.fs-rank-tier   { font-size: 7.5px; letter-spacing: 2px; color: rgba(201,168,76,0.4); display: block; margin-bottom: 3px; }
+.fs-rank-name   { font-size: 12px; letter-spacing: 2px; color: #e8e0cc; font-weight: 600; }
+.fs-rank-desc   { font-size: 10px; letter-spacing: 0.5px; color: rgba(232,224,204,0.45); line-height: 1.6; }
+.fs-rank-you-tag { font-size: 8.5px; letter-spacing: 2px; color: var(--fc); }
+
+/* Slots de cúpula */
+.fs-rank-slots { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; flex-shrink: 0; }
+.fs-rank-slots-label { font-size: 7.5px; letter-spacing: 2px; color: rgba(201,168,76,0.4); }
+.fs-rank-slots-dots  { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; max-width: 120px; }
+.fs-rank-slots-count { font-size: 9px; color: rgba(201,168,76,0.5); letter-spacing: 1px; }
+.fs-slot-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  border: 1px solid var(--fc-border);
+  background: transparent;
+}
+.fs-slot-dot--filled { background: var(--fc); box-shadow: 0 0 6px var(--fc); }
+
+/* Protocolo cinza */
+.fs-protocol {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 12px 14px;
+  background: rgba(255,200,0,0.05);
+  border: 1px solid rgba(255,200,0,0.15);
+  font-size: 10px; line-height: 1.7; letter-spacing: 0.5px;
+  color: rgba(232,224,204,0.45);
+}
+.fs-protocol-icon { color: rgba(255,200,0,0.5); font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+.fs-protocol strong { color: rgba(255,200,0,0.7); }
+
+/* Ações */
+.fs-actions { display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 8px; }
+
+.fs-flash {
+  font-size: 11px; letter-spacing: 1px;
+  color: rgba(201,168,76,0.85); text-align: center;
+  padding: 10px; background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.2);
+  animation: flashIn 0.3s ease;
+}
+@keyframes flashIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:none; } }
+
+.fs-cant-join {
+  font-size: 10px; letter-spacing: 1px; text-align: center;
+  color: rgba(232,80,80,0.6); padding: 10px;
+  border: 1px solid rgba(232,80,80,0.15);
+}
+
+.fs-btn {
+  font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px;
+  font-weight: 600; cursor: pointer; padding: 12px 20px; border-radius: 1px;
+  transition: box-shadow 0.2s, opacity 0.2s;
+}
+.fs-btn--join {
+  background: var(--fc-dim); border: 1px solid var(--fc-border); color: var(--fc);
+  box-shadow: 0 0 16px var(--fc-dim);
+}
+.fs-btn--join:hover { box-shadow: 0 0 30px var(--fc-dim); }
+
+.fs-btn--leave {
+  background: rgba(232,80,80,0.07); border: 1px solid rgba(232,80,80,0.2);
+  color: rgba(232,80,80,0.6); font-size: 10px;
+}
+.fs-btn--leave:hover { border-color: rgba(232,80,80,0.4); color: rgba(232,80,80,0.9); }
+
+.fs-confirm {
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 14px; background: rgba(5,5,9,0.7);
+  border: 1px solid rgba(201,168,76,0.2);
+}
+.fs-confirm p { font-size: 11px; letter-spacing: 1px; color: rgba(232,224,204,0.6); line-height: 1.6; }
+.fs-confirm-btns { display: flex; gap: 10px; }
+.fs-btn--confirm {
+  flex: 1; background: linear-gradient(135deg, #5c3d0a 0%, #c9a84c 50%, #5c3d0a 100%);
+  border: none; color: #0e0c06;
+}
+.fs-btn--confirm:hover { box-shadow: 0 0 20px rgba(201,168,76,0.4); }
+.fs-btn--confirm-danger {
+  flex: 1; background: rgba(200,30,30,0.15);
+  border: 1px solid rgba(200,30,30,0.4); color: rgba(232,80,80,0.9);
+}
+.fs-btn--confirm-danger:hover { background: rgba(200,30,30,0.25); }
+.fs-btn--cancel {
+  background: rgba(5,5,16,0.7); border: 1px solid rgba(201,168,76,0.2);
+  color: rgba(201,168,76,0.5);
+}
+.fs-btn--cancel:hover { border-color: rgba(201,168,76,0.5); color: rgba(201,168,76,0.9); }
+
+/* Responsivo */
+@media (max-width: 800px) {
+  .fs-detail-inner { grid-template-columns: 1fr; }
+  .fs-col-left { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.08); }
+  .fs-tab-name { font-size: 9px; }
+}

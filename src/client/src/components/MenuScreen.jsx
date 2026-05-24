@@ -58,7 +58,8 @@ export default function MenuScreen({ player, onLogout, onNavigate }) {
   const handleItem = (item) => {
     if (item.disabled) return
     setActive(item.id)
-    if (item.id === 'char') onNavigate('character-create')
+    if (item.id === 'char')    onNavigate('character-create')
+    if (item.id === 'faction') onNavigate('factions')
   }
 
   return (
