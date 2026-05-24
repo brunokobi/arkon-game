@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e8cc6a"/>
+      <stop offset="100%" stop-color="#9a6e14"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo -->
+  <rect width="32" height="32" rx="5" fill="#08080f"/>
+  <rect width="32" height="32" rx="5" fill="none" stroke="#c9a84c" stroke-width="0.6" opacity="0.5"/>
+
+  <!-- Tridente de Kobi -->
+  <g filter="url(#glow)" stroke="url(#gold)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Cabo -->
+    <line x1="16" y1="14" x2="16" y2="27" stroke-width="2"/>
+    <!-- Ponta central (mais alta) -->
+    <line x1="16" y1="4"  x2="16" y2="15" stroke-width="2"/>
+    <!-- Ponta esquerda -->
+    <path d="M10.5 14.5 L10.5 9 Q10.5 6 13.5 6" stroke-width="1.7"/>
+    <!-- Ponta direita -->
+    <path d="M21.5 14.5 L21.5 9 Q21.5 6 18.5 6" stroke-width="1.7"/>
+    <!-- Guarda / crossbar -->
+    <line x1="9" y1="15.5" x2="23" y2="15.5" stroke-width="1.4" opacity="0.8"/>
+    <!-- Base pontuda -->
+    <path d="M14 26.5 L16 29.5 L18 26.5" stroke-width="1.5"/>
+  </g>
+
+  <!-- Runas decorativas mínimas -->
+  <line x1="12" y1="20" x2="14" y2="20" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+  <line x1="18" y1="20" x2="20" y2="20" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+</svg>
