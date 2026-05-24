@@ -26,7 +26,7 @@ const MENU_ITEMS = [
   { id: 'settings', label: 'CONFIGURAÇÕES',    icon: 'ᚲ', primary: false, disabled: false },
 ]
 
-export default function MenuScreen({ player, onLogout }) {
+export default function MenuScreen({ player, onLogout, onNavigate }) {
   const mouseTarget  = useRef({ x: 0, y: 0 })
   const mouseCurrent = useRef({ x: 0, y: 0 })
   const rafRef = useRef(null)
@@ -58,7 +58,7 @@ export default function MenuScreen({ player, onLogout }) {
   const handleItem = (item) => {
     if (item.disabled) return
     setActive(item.id)
-    // TODO: navegar para as respectivas telas
+    if (item.id === 'char') onNavigate('character-create')
   }
 
   return (
