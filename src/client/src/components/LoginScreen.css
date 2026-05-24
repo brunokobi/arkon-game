@@ -298,6 +298,18 @@
 .ls-toggle:hover { color: rgba(201,168,76,0.85); }
 .ls-toggle strong { font-weight: 600; }
 
+/* hint de credenciais mock */
+.ls-mock-hint {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: rgba(201,168,76,0.35);
+  margin-top: 2px;
+  font-family: monospace;
+}
+
 /* ─────────────────────────────────────────
    FOOTER
 ───────────────────────────────────────── */

@@ -1,0 +1,448 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&display=swap');
+
+/* ─────────────────────────────────────────
+   ROOT
+───────────────────────────────────────── */
+.ms-root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #050509;
+  font-family: 'Cinzel', serif;
+}
+
+/* ─────────────────────────────────────────
+   PARALLAX LAYERS
+───────────────────────────────────────── */
+.ms-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ms-bg {
+  inset: -10%;
+  background: url('/assets/cover.png') center 55% / cover no-repeat;
+  filter: brightness(0.28) saturate(1.3) blur(1.5px);
+  will-change: transform;
+}
+
+.ms-mid {
+  will-change: transform;
+  background:
+    linear-gradient(to bottom, rgba(5,5,9,0.65) 0%, transparent 30%),
+    radial-gradient(ellipse 30% 45% at 50% 48%, rgba(100,180,255,0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 80% at 10% 60%, rgba(200,55,8,0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 80% at 90% 60%, rgba(15,75,190,0.16) 0%, transparent 65%);
+}
+
+/* runas */
+.ms-particles { overflow: hidden; }
+
+.ms-rune {
+  position: absolute;
+  bottom: -60px;
+  font-family: serif;
+  user-select: none;
+  animation: msRuneFloat linear infinite;
+}
+
+.ms-rune--fire { color: #e86010; text-shadow: 0 0 10px rgba(232,96,16,0.6); }
+.ms-rune--ice  { color: #4fc3f7; text-shadow: 0 0 10px rgba(79,195,247,0.6); }
+.ms-rune--gold { color: #c9a84c; text-shadow: 0 0 10px rgba(201,168,76,0.55); }
+
+@keyframes msRuneFloat {
+  0%   { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
+  6%   { opacity: 0.7; }
+  90%  { opacity: 0.25; }
+  100% { transform: translateY(-108vh) rotate(540deg) scale(1.2); opacity: 0; }
+}
+
+.ms-vignette {
+  background:
+    radial-gradient(ellipse 120% 50% at 50% 100%, rgba(5,5,9,0.97) 0%, transparent 55%),
+    radial-gradient(ellipse 120% 35% at 50% 0%,   rgba(5,5,9,0.85) 0%, transparent 50%),
+    radial-gradient(ellipse 25% 100% at 0%   50%, rgba(5,5,9,0.65) 0%, transparent 50%),
+    radial-gradient(ellipse 25% 100% at 100% 50%, rgba(5,5,9,0.65) 0%, transparent 50%);
+}
+
+.ms-scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+}
+
+/* ─────────────────────────────────────────
+   HEADER
+───────────────────────────────────────── */
+.ms-header {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  border-bottom: 1px solid rgba(201,168,76,0.12);
+  background: rgba(5,5,9,0.55);
+  backdrop-filter: blur(8px);
+}
+
+.ms-header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ms-header-sigil {
+  font-size: 18px;
+  color: #c9a84c;
+  text-shadow: 0 0 12px rgba(201,168,76,0.7);
+}
+
+.ms-header-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 18px;
+  color: #c9a84c;
+  letter-spacing: 5px;
+  text-shadow: 0 0 20px rgba(201,168,76,0.35);
+}
+
+.ms-header-player {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ms-header-name {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: rgba(232,224,204,0.85);
+}
+
+/* badges de facção */
+.ms-badge {
+  font-size: 8px;
+  letter-spacing: 2px;
+  padding: 3px 8px;
+  border: 1px solid;
+}
+
+.ms-badge--none   { color: rgba(180,180,180,0.6); border-color: rgba(180,180,180,0.25); }
+.ms-badge--bonde  { color: #e86010; border-color: rgba(232,96,16,0.4); }
+.ms-badge--gestao { color: #4fc3f7; border-color: rgba(79,195,247,0.4); }
+
+/* ─────────────────────────────────────────
+   MAIN — layout dois painéis
+───────────────────────────────────────── */
+.ms-main {
+  position: relative;
+  z-index: 20;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 24px 40px;
+}
+
+/* ─────────────────────────────────────────
+   PLAYER CARD (esquerda)
+───────────────────────────────────────── */
+.ms-player-card {
+  width: 220px;
+  flex-shrink: 0;
+  background: rgba(5,5,16,0.78);
+  border: 1px solid rgba(201,168,76,0.22);
+  backdrop-filter: blur(14px);
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.7), inset 0 1px 0 rgba(201,168,76,0.1);
+}
+
+.ms-avatar {
+  width: 64px;
+  height: 64px;
+  border: 1px solid rgba(201,168,76,0.35);
+  background: rgba(201,168,76,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #c9a84c;
+  margin-bottom: 4px;
+  text-shadow: 0 0 16px rgba(201,168,76,0.6);
+}
+
+.ms-player-name {
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #e8e0cc;
+  font-weight: 600;
+  text-align: center;
+}
+
+.ms-player-class {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: rgba(201,168,76,0.5);
+  margin-bottom: 8px;
+}
+
+.ms-stats {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  border-top: 1px solid rgba(201,168,76,0.12);
+  padding-top: 12px;
+}
+
+.ms-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ms-stat--full { grid-column: 1 / -1; }
+
+.ms-stat-label {
+  font-size: 7.5px;
+  letter-spacing: 2px;
+  color: rgba(201,168,76,0.5);
+}
+
+.ms-stat-value {
+  font-size: 14px;
+  color: #e8e0cc;
+  font-weight: 600;
+}
+
+.ms-stat-faction        { font-size: 10px; letter-spacing: 1px; }
+.ms-stat-faction--none  { color: rgba(180,180,180,0.55); }
+.ms-stat-faction--bonde { color: #e86010; }
+.ms-stat-faction--gestao{ color: #4fc3f7; }
+
+.ms-arco-hint {
+  margin-top: 8px;
+  width: 100%;
+  padding: 8px 10px;
+  background: rgba(201,168,76,0.07);
+  border: 1px solid rgba(201,168,76,0.18);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 9.5px;
+  letter-spacing: 1px;
+  color: rgba(201,168,76,0.65);
+}
+
+.ms-arco-icon { font-size: 12px; color: #c9a84c; }
+
+/* ─────────────────────────────────────────
+   NAV — menu (direita)
+───────────────────────────────────────── */
+.ms-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: min(420px, calc(100vw - 320px));
+}
+
+.ms-nav-logo {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.ms-nav-sigil {
+  font-size: 22px;
+  color: #c9a84c;
+  text-shadow: 0 0 20px rgba(201,168,76,0.8), 0 0 40px rgba(255,120,0,0.3);
+  animation: navSigilPulse 3s ease-in-out infinite;
+  margin-bottom: 6px;
+}
+
+@keyframes navSigilPulse {
+  0%, 100% { text-shadow: 0 0 16px rgba(201,168,76,0.7), 0 0 32px rgba(255,100,0,0.2); }
+  50%       { text-shadow: 0 0 28px rgba(201,168,76,1),   0 0 55px rgba(255,120,0,0.5); }
+}
+
+.ms-nav-logo h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 32px;
+  color: #c9a84c;
+  letter-spacing: 8px;
+  text-shadow: 0 0 30px rgba(201,168,76,0.35);
+  margin-bottom: 4px;
+}
+
+.ms-nav-logo p {
+  font-size: 8.5px;
+  letter-spacing: 3px;
+  color: rgba(201,168,76,0.5);
+}
+
+/* lista de menu */
+.ms-menu {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ms-menu-btn {
+  width: 100%;
+  padding: 13px 20px;
+  background: rgba(5,5,16,0.72);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-left: 3px solid transparent;
+  color: rgba(232,224,204,0.75);
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+  backdrop-filter: blur(8px);
+  text-align: left;
+  position: relative;
+}
+
+.ms-menu-btn:hover:not(.ms-menu-btn--disabled) {
+  background: rgba(201,168,76,0.08);
+  border-color: rgba(201,168,76,0.45);
+  border-left-color: #c9a84c;
+  color: #e8e0cc;
+  box-shadow: 0 0 20px rgba(201,168,76,0.12);
+}
+
+.ms-menu-btn--primary {
+  background: linear-gradient(135deg, #4a2f07 0%, #8b6210 45%, #8b6210 55%, #4a2f07 100%);
+  border-color: rgba(201,168,76,0.5);
+  border-left-color: #c9a84c;
+  color: #e8c84c;
+  font-weight: 700;
+  font-size: 13px;
+  box-shadow: 0 0 25px rgba(201,168,76,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  animation: primaryPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes primaryPulse {
+  0%, 100% { box-shadow: 0 0 25px rgba(201,168,76,0.2); }
+  50%       { box-shadow: 0 0 40px rgba(201,168,76,0.4), 0 0 60px rgba(201,168,76,0.1); }
+}
+
+.ms-menu-btn--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.ms-menu-btn--active:not(.ms-menu-btn--disabled) {
+  border-left-color: #c9a84c;
+  color: #c9a84c;
+}
+
+.ms-menu-icon {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+  color: rgba(201,168,76,0.7);
+}
+
+.ms-menu-btn--primary .ms-menu-icon { color: #e8c84c; }
+
+.ms-menu-label { flex: 1; }
+
+.ms-menu-soon {
+  font-size: 7.5px;
+  letter-spacing: 2px;
+  color: rgba(201,168,76,0.4);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 2px 6px;
+}
+
+/* botão sair */
+.ms-logout {
+  margin-top: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: rgba(201,168,76,0.35);
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+
+.ms-logout:hover { color: rgba(201,168,76,0.75); }
+
+/* ─────────────────────────────────────────
+   LORE QUOTE
+───────────────────────────────────────── */
+.ms-quote {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 40px 14px;
+  font-size: 11px;
+  font-style: italic;
+  letter-spacing: 1px;
+  color: rgba(201,168,76,0.3);
+  border-top: 1px solid rgba(201,168,76,0.08);
+}
+
+.ms-quote-rune { font-style: normal; font-size: 14px; }
+.ms-quote q    { quotes: none; }
+
+/* ─────────────────────────────────────────
+   LABELS DE ZONA
+───────────────────────────────────────── */
+.ms-zone {
+  position: absolute;
+  bottom: 44px;
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 7px 14px;
+  border: 1px solid rgba(201,168,76,0.18);
+  background: rgba(5,5,9,0.6);
+  backdrop-filter: blur(6px);
+}
+
+.ms-zone span   { font-size: 7px; letter-spacing: 2px; }
+.ms-zone strong { font-size: 10px; letter-spacing: 2px; font-weight: 600; }
+
+.ms-zone--left  { left: 24px; color: #e86010; border-color: rgba(232,96,16,0.28); }
+.ms-zone--left span  { color: rgba(232,96,16,0.5); }
+.ms-zone--right { right: 24px; color: #4fc3f7; border-color: rgba(79,195,247,0.28); }
+.ms-zone--right span { color: rgba(79,195,247,0.5); }
+
+/* ─────────────────────────────────────────
+   RESPONSIVO
+───────────────────────────────────────── */
+@media (max-width: 700px) {
+  .ms-main { flex-direction: column; padding: 16px; gap: 16px; overflow-y: auto; }
+  .ms-player-card { width: 100%; flex-direction: row; flex-wrap: wrap; justify-content: space-between; }
+  .ms-nav { width: 100%; }
+  .ms-zone { display: none; }
+  .ms-nav-logo { margin-bottom: 16px; }
+  .ms-nav-logo h1 { font-size: 24px; }
+}
