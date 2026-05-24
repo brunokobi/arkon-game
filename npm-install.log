@@ -1,0 +1,5 @@
+npm error code UNABLE_TO_VERIFY_LEAF_SIGNATURE
+npm error errno UNABLE_TO_VERIFY_LEAF_SIGNATURE
+npm error request to https://registry.npmjs.org/@vitejs%2fplugin-react failed, reason: unable to verify the first certificate
+npm error A complete log of this run can be found in: C:\Users\bruno\AppData\Local\npm-cache\_logs\2026-05-24T13_38_13_366Z-debug-0.log
+EXIT:1
