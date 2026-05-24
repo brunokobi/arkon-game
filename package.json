@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npm run dev --prefix src/client",
-    "build": "npm run build --prefix src/client",
+    "build": "npm run install:client && npm run build --prefix src/client",
     "preview": "npm run preview --prefix src/client",
     "install:client": "npm install --prefix src/client"
   }
