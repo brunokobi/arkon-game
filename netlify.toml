@@ -1,0 +1,12 @@
+[build]
+  # 1. Instala as dependências do subdiretório e gera o build do Vite
+  command = "npm run install:client && npm run build --prefix src/client"
+  
+  # 2. Aponta para a pasta onde o Vite realmente gera os arquivos estáticos
+  publish = "src/client/dist"
+
+[[redirects]]
+  # 3. Resolve o problema de 404 em Single Page Applications (SPA)
+  from = "/*"
+  to = "/index.html"
+  status = 200
