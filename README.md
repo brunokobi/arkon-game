@@ -67,6 +67,8 @@ Browser game multiplayer 2D top-down no estilo Tibia — sátira política brasi
 - [x] Estrutura de pastas + dependências
 - [x] Tela de login com parallax
 - [x] Menu inicial com ficha do personagem
+- [x] Tela de criação de personagem (3 etapas)
+- [x] Tela de facções com hierarquia e ações
 - [ ] Supabase: migrations + seed
 - [ ] Auth real com Supabase
 - [ ] Phaser: BootScene + WorldScene com tilemap
@@ -90,7 +92,19 @@ npm run dev        # sobe o client em http://localhost:5173
 
 ## Documentação
 
-Veja [`CLAUDE.md`](CLAUDE.md) para o contexto completo: lore, facções, personagens, geografia, classes, sistemas, eventos, missões e schema do banco.
+| Documento | Descrição |
+|---|---|
+| [`docs/synopsis.md`](docs/synopsis.md) | Sinopse completa — Varen, Eira e o Tridente |
+| [`docs/glossary.md`](docs/glossary.md) | Glossário dos termos do jogo |
+| [`docs/lore/world.md`](docs/lore/world.md) | O mundo Arkon — origem, sacrifício de Kobi, o Tridente |
+| [`docs/lore/gods.md`](docs/lore/gods.md) | Molusk, Bolzarius, os herdeiros e o Protocolo Cinza |
+| [`docs/lore/factions.md`](docs/lore/factions.md) | As três facções — hierarquia, NPCs, posições únicas |
+| [`docs/lore/geography.md`](docs/lore/geography.md) | Geografia — Skálholm, Aetherion, Bifrost, Niflheim |
+| [`docs/gameplay/classes.md`](docs/gameplay/classes.md) | As quatro classes jogáveis e suas skills |
+| [`docs/gameplay/systems.md`](docs/gameplay/systems.md) | Sistemas: Gradus, Influência, Ficha, Ars, Memoria Loci |
+| [`docs/gameplay/missions.md`](docs/gameplay/missions.md) | Missões — Arco 0, Arco 1A (Bonde), Arco 1B (Gestão) |
+| [`docs/gameplay/events.md`](docs/gameplay/events.md) | Eventos — O Pleito, sazonais e emergentes |
+| [`CLAUDE.md`](CLAUDE.md) | Contexto completo do projeto (stack, schema, MVP) |
 
 ---
 
