@@ -1,0 +1,232 @@
+/* ── Root ──────────────────────────────────────────────────────────────────── */
+.gc-root {
+  position: fixed;
+  inset: 0;
+  background: #050508;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* ── Phaser canvas wrapper ─────────────────────────────────────────────────── */
+.gc-canvas {
+  position: relative;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.gc-canvas canvas {
+  display: block;
+  image-rendering: pixelated;
+}
+
+/* ── HUD ───────────────────────────────────────────────────────────────────── */
+.gc-hud {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 16px;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.gc-zone-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(5,5,8,0.75);
+  border: 1px solid rgba(240,192,80,0.25);
+  border-radius: 3px;
+  padding: 4px 10px;
+  backdrop-filter: blur(4px);
+}
+
+.gc-zone-rune {
+  color: #f0c050;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.gc-zone-name {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #c8a96e;
+  text-transform: uppercase;
+}
+
+.gc-player-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(5,5,8,0.75);
+  border: 1px solid rgba(200,169,110,0.2);
+  border-radius: 3px;
+  padding: 4px 10px;
+  backdrop-filter: blur(4px);
+}
+
+.gc-player-name {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #e8d5a3;
+}
+
+.gc-player-level {
+  font-size: 9px;
+  color: #888;
+  letter-spacing: 1px;
+}
+
+/* ── Controls hint ─────────────────────────────────────────────────────────── */
+.gc-controls-hint {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: rgba(200,169,110,0.4);
+  pointer-events: none;
+  z-index: 50;
+  text-transform: uppercase;
+}
+
+.gc-sep { opacity: 0.3; }
+
+.gc-controls-hint kbd {
+  font-family: inherit;
+  background: rgba(240,192,80,0.15);
+  border: 1px solid rgba(240,192,80,0.3);
+  border-radius: 2px;
+  padding: 0 4px;
+  color: #f0c050;
+}
+
+/* ── Dialogue overlay ──────────────────────────────────────────────────────── */
+.gc-dialogue-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 40px;
+  z-index: 200;
+  pointer-events: none;
+}
+
+.gc-dialogue {
+  pointer-events: all;
+  width: min(640px, 90vw);
+  background: rgba(8,8,18,0.96);
+  border: 1px solid rgba(200,169,110,0.4);
+  border-radius: 4px;
+  padding: 16px 20px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.8), 0 0 12px rgba(240,168,48,0.08);
+}
+
+.gc-dialogue-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(200,169,110,0.15);
+  padding-bottom: 8px;
+}
+
+.gc-dialogue-rune {
+  color: #f0a830;
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.gc-dialogue-name {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #c8a96e;
+  text-transform: uppercase;
+}
+
+.gc-dialogue-text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #d0c0a0;
+  margin: 0 0 14px;
+  font-style: italic;
+}
+
+.gc-dialogue-btn {
+  background: none;
+  border: 1px solid rgba(200,169,110,0.4);
+  color: #c8a96e;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding: 5px 14px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.15s, color 0.15s;
+  display: block;
+  margin-left: auto;
+}
+
+.gc-dialogue-btn:hover {
+  background: rgba(200,169,110,0.12);
+  color: #e8d5a3;
+}
+
+/* ── Exit notification ─────────────────────────────────────────────────────── */
+.gc-notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(8,8,18,0.92);
+  border: 1px solid rgba(200,169,110,0.5);
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #c8a96e;
+  text-transform: uppercase;
+  z-index: 300;
+  animation: gc-fade-in-out 3s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes gc-fade-in-out {
+  0%   { opacity: 0; transform: translate(-50%, calc(-50% - 10px)); }
+  15%  { opacity: 1; transform: translate(-50%, -50%); }
+  75%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ── Back button ───────────────────────────────────────────────────────────── */
+.gc-back-btn {
+  position: fixed;
+  bottom: 10px;
+  left: 12px;
+  background: none;
+  border: 1px solid rgba(200,169,110,0.2);
+  color: rgba(200,169,110,0.45);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 2px;
+  z-index: 50;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.gc-back-btn:hover {
+  color: #c8a96e;
+  border-color: rgba(200,169,110,0.5);
+}

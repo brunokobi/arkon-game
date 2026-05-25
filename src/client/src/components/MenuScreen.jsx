@@ -19,7 +19,7 @@ const CLASS_LABEL   = { none: 'SEM CLASSE', geral: 'O GERAL', esquemista: 'O ESQ
 const lerp = (a, b, t) => a + (b - a) * t
 
 const MENU_ITEMS = [
-  { id: 'play',     label: 'ENTRAR EM ARKON', icon: '▶', primary: true,  disabled: true,  hint: 'Em desenvolvimento' },
+  { id: 'play',     label: 'ENTRAR EM ARKON', icon: '▶', primary: true,  disabled: false },
   { id: 'char',     label: 'PERSONAGEM',       icon: 'ᛉ', primary: false, disabled: false },
   { id: 'faction',  label: 'FACÇÕES',          icon: 'ᚷ', primary: false, disabled: false },
   { id: 'missions', label: 'MISSÕES',          icon: 'ᛏ', primary: false, disabled: false },
@@ -58,6 +58,7 @@ export default function MenuScreen({ player, onLogout, onNavigate }) {
   const handleItem = (item) => {
     if (item.disabled) return
     setActive(item.id)
+    if (item.id === 'play')    onNavigate('game')
     if (item.id === 'char')    onNavigate('character-create')
     if (item.id === 'faction') onNavigate('factions')
   }

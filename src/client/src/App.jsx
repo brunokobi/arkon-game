@@ -4,6 +4,7 @@ import LoginScreen from './components/LoginScreen'
 import MenuScreen from './components/MenuScreen'
 import CharacterCreate from './components/CharacterCreate'
 import FactionScreen from './components/FactionScreen'
+import GameCanvas from './components/GameCanvas'
 
 export default function App() {
   const { player, setPlayer, clearPlayer } = usePlayerStore()
@@ -11,6 +12,9 @@ export default function App() {
 
   if (!player)
     return <LoginScreen onLogin={(p) => { setPlayer(p); setScreen('menu') }} />
+
+  if (screen === 'game')
+    return <GameCanvas player={player} onBack={() => setScreen('menu')} />
 
   if (screen === 'character-create')
     return (
