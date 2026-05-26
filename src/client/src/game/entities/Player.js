@@ -50,9 +50,17 @@ export default class Player {
 
     body.setVelocity(vx, vy)
 
-    // Flip sprite horizontally based on direction
+    // Flip sprite horizontally based on horizontal direction
     if (vx < 0) this.sprite.setFlipX(true)
     if (vx > 0) this.sprite.setFlipX(false)
+
+    // Walk animation
+    if (vx !== 0 || vy !== 0) {
+      this.sprite.play('player-walk', true)
+    } else {
+      this.sprite.stop()
+      this.sprite.setFrame(SPRITE_FRAMES.PLAYER)
+    }
   }
 
   /** Returns true on the frame the interact key was just pressed */

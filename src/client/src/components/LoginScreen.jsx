@@ -19,15 +19,41 @@ const lerp = (a, b, t) => a + (b - a) * t
 export default function LoginScreen({ onLogin }) {
   const mouseTarget  = useRef({ x: 0, y: 0 })
   const mouseCurrent = useRef({ x: 0, y: 0 })
-  const rafRef = useRef(null)
-  const bgRef  = useRef(null)
-  const midRef = useRef(null)
-  const fgRef  = useRef(null)
+  const rafRef  = useRef(null)
+  const bgRef   = useRef(null)
+  const midRef  = useRef(null)
+  const fgRef   = useRef(null)
+  const audioRef = useRef(null)
 
   const [mode, setMode]     = useState('login')
   const [form, setForm]     = useState({ username: '', email: '', password: '' })
   const [loading, setLoading] = useState(false)
   const [error, setError]   = useState('')
+
+  // Background music — autoplay with fallback on first interaction
+  useEffect(() => {
+    const audio = new Audio('/assets/medieval.ogg')
+    audio.loop = true
+    audio.volume = 0.28
+    audioRef.current = audio
+
+    audio.play().catch(() => {})
+
+    const onInteract = () => {
+      audio.play().catch(() => {})
+      window.removeEventListener('click', onInteract)
+      window.removeEventListener('keydown', onInteract)
+    }
+    window.addEventListener('click', onInteract)
+    window.addEventListener('keydown', onInteract)
+
+    return () => {
+      audio.pause()
+      audio.src = ''
+      window.removeEventListener('click', onInteract)
+      window.removeEventListener('keydown', onInteract)
+    }
+  }, [])
 
   const tick = useCallback(() => {
     mouseCurrent.current.x = lerp(mouseCurrent.current.x, mouseTarget.current.x, 0.06)

@@ -10,10 +10,12 @@ export default class BootScene extends Phaser.Scene {
     this.load.spritesheet('walls',    'assets/sprites/otsp_walls_01.png',    { frameWidth: 32, frameHeight: 32 })
     this.load.spritesheet('chars01',  'assets/sprites/otsp_creatures_01.png', { frameWidth: 32, frameHeight: 32 })
     this.load.spritesheet('chars02',  'assets/sprites/otsp_creatures_02.png', { frameWidth: 32, frameHeight: 32 })
+    this.load.audio('bifrost-music',  'assets/dark-fallout.ogg')
   }
 
   create() {
     this._generateUtilTextures()
+    this._createAnimations()
     this.scene.start('WorldScene')
   }
 
@@ -36,5 +38,29 @@ export default class BootScene extends Phaser.Scene {
     hint.fillRect(7, 6, 2, 8)
     hint.generateTexture('hint_e', 20, 20)
     hint.destroy()
+
+    // ── Vignette — radial gradient, transparent center → dark edges ──────────
+    const W = 800, H = 560
+    const vc = document.createElement('canvas')
+    vc.width = W
+    vc.height = H
+    const ctx = vc.getContext('2d')
+    const g = ctx.createRadialGradient(W / 2, H / 2, W * 0.12, W / 2, H / 2, W * 0.62)
+    g.addColorStop(0,   'rgba(0,0,0,0)')
+    g.addColorStop(0.6, 'rgba(0,0,0,0.12)')
+    g.addColorStop(1,   'rgba(0,0,0,0.78)')
+    ctx.fillStyle = g
+    ctx.fillRect(0, 0, W, H)
+    this.textures.addCanvas('vignette', vc)
+  }
+
+  _createAnimations() {
+    // Knight walk — 3-frame south-facing cycle; flipX handles west direction
+    this.anims.create({
+      key: 'player-walk',
+      frames: this.anims.generateFrameNumbers('chars01', { frames: [32, 33, 34] }),
+      frameRate: 8,
+      repeat: -1,
+    })
   }
 }

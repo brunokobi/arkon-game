@@ -59,7 +59,12 @@ export default class WorldScene extends Phaser.Scene {
     // ── 7. Emit zone entry to React ───────────────────────────────────────────
     this.game.events.emit('zone-enter', { id: 'bifrost', name: 'BIFROST INFERIOR' })
 
-    // ── 8. Internal state ─────────────────────────────────────────────────────
+    // ── 8. Background music ───────────────────────────────────────────────────
+    this.music = this.sound.add('bifrost-music', { loop: true, volume: 0.3 })
+    this.music.play()
+    this.events.once('shutdown', () => this.music.stop())
+
+    // ── 9. Internal state ─────────────────────────────────────────────────────
     this._nearNpc      = null
     this._hintSprite   = null
     this._dialogueOpen = false
@@ -249,25 +254,9 @@ export default class WorldScene extends Phaser.Scene {
   }
 
   _createAmbientOverlay() {
-    // Dark vignette at camera edges — attached to camera (fixed position)
     const cam = this.cameras.main
-    const vig = this.add.graphics()
+    this.add.image(cam.width / 2, cam.height / 2, 'vignette')
       .setScrollFactor(0)
       .setDepth(100)
-
-    const W = cam.width
-    const H = cam.height
-
-    // Four corner gradients
-    const corners = [
-      [0, 0],
-      [W, 0],
-      [0, H],
-      [W, H],
-    ]
-    for (const [cx, cy] of corners) {
-      vig.fillStyle(0x000000, 0.45)
-      vig.fillCircle(cx, cy, W * 0.55)
-    }
   }
 }
