@@ -117,4 +117,11 @@ export const ZONE = {
   exits: SKALHOLM_EXITS,
   spawn: PLAYER_SPAWN,
   music: 'bifrost-music',
+  tiles: {
+    floor: 160,  // terra oliva escura — chão orgânico sem planejamento
+    wall:  176,  // terra marrom profunda — paredes compactadas de Venarum
+    mana:  130,  // terra rachada laranja — mana de Molusk vazando pelas rachaduras
+    exit:  284,  // pedra bruta escura — passagem para o Bifrost
+  },
+  manaParticle: 0xffdd44,  // amarelo-dourado (contraste sobre o chão laranja)
 }

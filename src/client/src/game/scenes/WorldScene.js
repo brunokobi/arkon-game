@@ -102,14 +102,15 @@ export default class WorldScene extends Phaser.Scene {
   // ── Tile rendering ─────────────────────────────────────────────────────────
 
   _renderTile(tileId, cx, cy) {
+    const t = this._zone.tiles
     if (tileId === TILE.WALL) {
-      this.add.image(cx, cy, 'tiles', SPRITE_FRAMES.WALL_BG).setDepth(0)
+      this.add.image(cx, cy, 'tiles', t.wall).setDepth(0)
     } else if (tileId === TILE.MANA_FLOOR) {
-      this.add.image(cx, cy, 'tiles', SPRITE_FRAMES.MANA).setDepth(0)
+      this.add.image(cx, cy, 'tiles', t.mana).setDepth(0)
     } else if (tileId === TILE.EXIT_WEST || tileId === TILE.EXIT_EAST) {
-      this.add.image(cx, cy, 'tiles', SPRITE_FRAMES.EXIT).setDepth(0)
+      this.add.image(cx, cy, 'tiles', t.exit).setDepth(0)
     } else {
-      this.add.image(cx, cy, 'tiles', SPRITE_FRAMES.FLOOR).setDepth(0)
+      this.add.image(cx, cy, 'tiles', t.floor).setDepth(0)
     }
   }
 
@@ -249,7 +250,7 @@ export default class WorldScene extends Phaser.Scene {
         const y = row * TILE_SIZE + Math.random() * TILE_SIZE
 
         const dot = this.add.graphics().setDepth(1)
-        dot.fillStyle(COLORS.manaGlow, 0.5)
+        dot.fillStyle(this._zone.manaParticle, 0.5)
         dot.fillCircle(0, 0, 2)
         dot.setPosition(x, y)
 

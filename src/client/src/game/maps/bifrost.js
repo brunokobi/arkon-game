@@ -94,4 +94,11 @@ export const ZONE = {
   exits: BIFROST_EXITS,
   spawn: PLAYER_SPAWN,
   music: 'bifrost-music',
+  tiles: {
+    floor: 224,  // pedra cinza arredondada (chão de dungeon)
+    wall:  192,  // terra marrom escura
+    mana:  304,  // tile azul (zona de mana)
+    exit:  288,  // mármore claro
+  },
+  manaParticle: 0xff6600,  // laranja
 }
