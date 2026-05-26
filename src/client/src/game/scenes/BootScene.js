@@ -75,6 +75,8 @@ export default class BootScene extends Phaser.Scene {
     tex.add('cn0', 0, 128, 224, 64, 64)  // idle north
     tex.add('cn1', 0, 192, 224, 64, 64)  // walk north 1
     tex.add('cn2', 0, 128, 288, 64, 64)  // walk north 2
+    // Green mana sword (equipment row y=64)
+    tex.add('sword', 0, 0, 64, 32, 32)
 
     this.anims.create({
       key: 'corvo-s',

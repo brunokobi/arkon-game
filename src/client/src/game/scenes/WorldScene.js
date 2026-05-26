@@ -185,19 +185,16 @@ export default class WorldScene extends Phaser.Scene {
   _doPlayerAttack() {
     const { x: ax, y: ay, dir } = this.player.attackOrigin
 
-    // ── Slash lines ────────────────────────────────────────────────────────────
-    const slash = this.add.graphics().setDepth(12)
-    slash.lineStyle(3, 0xfff0aa, 0.95)
-    if (dir === 'e' || dir === 'w') {
-      const s = dir === 'e' ? 1 : -1
-      slash.beginPath(); slash.moveTo(ax - s * 12, ay - 14); slash.lineTo(ax + s * 14, ay + 10); slash.strokePath()
-      slash.beginPath(); slash.moveTo(ax + s * 10, ay - 10); slash.lineTo(ax - s * 10, ay + 14); slash.strokePath()
-    } else {
-      // north / south — horizontal sweep
-      slash.beginPath(); slash.moveTo(ax - 14, ay - 10); slash.lineTo(ax + 14, ay + 8); slash.strokePath()
-      slash.beginPath(); slash.moveTo(ax + 10, ay - 12); slash.lineTo(ax - 10, ay + 10); slash.strokePath()
-    }
-    this.tweens.add({ targets: slash, alpha: 0, duration: 180, onComplete: () => slash.destroy() })
+    // ── Sword sprite swing ─────────────────────────────────────────────────────
+    const sword = this.add.image(ax, ay, 'corvo', 'sword').setDepth(12).setScale(1.1)
+    const angles = { e: [-0.4, 0.6], w: [0.4, -0.6], s: [0.6, 1.4], n: [-1.4, -0.6] }
+    const [startA, endA] = angles[dir] ?? angles.s
+    sword.setRotation(startA)
+    if (dir === 'w') sword.setFlipX(true)
+    this.tweens.add({
+      targets: sword, rotation: endA, scaleX: 1.5, scaleY: 1.5, alpha: 0,
+      duration: 220, ease: 'Quad.easeOut', onComplete: () => sword.destroy(),
+    })
 
     // ── Sparks ─────────────────────────────────────────────────────────────────
     for (let i = 0; i < 5; i++) {
