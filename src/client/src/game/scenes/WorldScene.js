@@ -80,10 +80,7 @@ export default class WorldScene extends Phaser.Scene {
 
   _renderTile(tileId, cx, cy) {
     if (tileId === TILE.WALL) {
-      // Dark earth base
       this.add.image(cx, cy, 'tiles', SPRITE_FRAMES.WALL_BG).setDepth(0)
-      // Stone wall object on top (isometric, gives depth like Tibia)
-      this.add.image(cx, cy, 'walls', SPRITE_FRAMES.WALL_OBJ).setDepth(1)
     } else if (tileId === TILE.MANA_FLOOR) {
       this.add.image(cx, cy, 'tiles', SPRITE_FRAMES.MANA).setDepth(0)
     } else if (tileId === TILE.EXIT_WEST || tileId === TILE.EXIT_EAST) {
@@ -97,7 +94,7 @@ export default class WorldScene extends Phaser.Scene {
     const x = def.tile.col * TILE_SIZE + TILE_SIZE / 2
     const y = def.tile.row * TILE_SIZE + TILE_SIZE / 2
 
-    const sprite = this.add.image(x, y, 'chars02').setFrame(SPRITE_FRAMES.NPC_MERCUS).setDepth(5)
+    const sprite = this.add.image(x, y, 'chars01').setFrame(SPRITE_FRAMES.NPC_MERCUS).setDepth(5)
 
     // Pulsing scale tween
     this.tweens.add({
