@@ -1,25 +1,42 @@
 import Phaser from 'phaser'
 import { TILE, TILE_SIZE, COLORS, INTERACT_DIST, SPRITE_FRAMES } from '../constants.js'
-import { BIFROST_MAP, BIFROST_NPCS, BIFROST_EXITS, PLAYER_SPAWN, MAP_W, MAP_H } from '../maps/bifrost.js'
+import { ZONE as BIFROST }  from '../maps/bifrost.js'
+import { ZONE as SKALHOLM } from '../maps/skalholm.js'
 import Player from '../entities/Player.js'
+
+const ZONES = {
+  bifrost:  BIFROST,
+  skalholm: SKALHOLM,
+}
 
 export default class WorldScene extends Phaser.Scene {
   constructor() {
     super({ key: 'WorldScene' })
   }
 
+  init(data) {
+    this._zoneId        = data?.zoneId       ?? 'bifrost'
+    this._spawnOverride = data?.spawnOverride ?? null
+  }
+
   create() {
-    const worldW = MAP_W * TILE_SIZE
-    const worldH = MAP_H * TILE_SIZE
+    const zone = ZONES[this._zoneId]
+    const { map, mapW, mapH, npcs, exits, spawn: defaultSpawn, id, name, music } = zone
+    const spawnPos = this._spawnOverride ?? defaultSpawn
+
+    const worldW = mapW * TILE_SIZE
+    const worldH = mapH * TILE_SIZE
+
+    this._zone = zone
 
     // ── 1. Render tiles + build wall colliders ────────────────────────────────
     this.wallGroup = this.physics.add.staticGroup()
 
-    for (let row = 0; row < MAP_H; row++) {
-      for (let col = 0; col < MAP_W; col++) {
-        const tileId = BIFROST_MAP[row][col]
-        const x = col * TILE_SIZE
-        const y = row * TILE_SIZE
+    for (let row = 0; row < mapH; row++) {
+      for (let col = 0; col < mapW; col++) {
+        const tileId = map[row][col]
+        const x  = col * TILE_SIZE
+        const y  = row * TILE_SIZE
         const cx = x + TILE_SIZE / 2
         const cy = y + TILE_SIZE / 2
 
@@ -35,15 +52,15 @@ export default class WorldScene extends Phaser.Scene {
     }
 
     // ── 2. Mana particle layer (visual — no logic) ────────────────────────────
-    this._spawnManaParticles()
+    this._spawnManaParticles(map, mapW, mapH)
 
     // ── 3. Player ─────────────────────────────────────────────────────────────
-    this.player = new Player(this, PLAYER_SPAWN.col, PLAYER_SPAWN.row)
+    this.player = new Player(this, spawnPos.col, spawnPos.row)
     this.physics.add.collider(this.player.sprite, this.wallGroup)
 
     // ── 4. NPCs ───────────────────────────────────────────────────────────────
     this.npcs = []
-    for (const def of BIFROST_NPCS) {
+    for (const def of npcs) {
       this._createNpc(def)
     }
 
@@ -53,14 +70,15 @@ export default class WorldScene extends Phaser.Scene {
     this.cameras.main.startFollow(this.player.sprite, true, 0.12, 0.12)
     this.physics.world.setBounds(0, 0, worldW, worldH)
 
-    // ── 6. Ambient overlay (scanlines / vignette feel) ────────────────────────
+    // ── 6. Ambient overlay (vignette) ─────────────────────────────────────────
     this._createAmbientOverlay()
 
     // ── 7. Emit zone entry to React ───────────────────────────────────────────
-    this.game.events.emit('zone-enter', { id: 'bifrost', name: 'BIFROST INFERIOR' })
+    this.game.events.emit('dialogue-close')
+    this.game.events.emit('zone-enter', { id, name })
 
     // ── 8. Background music ───────────────────────────────────────────────────
-    this.music = this.sound.add('bifrost-music', { loop: true, volume: 0.3 })
+    this.music = this.sound.add(music, { loop: true, volume: 0.3 })
     this.music.play()
     this.events.once('shutdown', () => this.music.stop())
 
@@ -81,7 +99,7 @@ export default class WorldScene extends Phaser.Scene {
     this._checkExits()
   }
 
-  // ── NPC ────────────────────────────────────────────────────────────────────
+  // ── Tile rendering ─────────────────────────────────────────────────────────
 
   _renderTile(tileId, cx, cy) {
     if (tileId === TILE.WALL) {
@@ -95,13 +113,16 @@ export default class WorldScene extends Phaser.Scene {
     }
   }
 
+  // ── NPCs ───────────────────────────────────────────────────────────────────
+
   _createNpc(def) {
     const x = def.tile.col * TILE_SIZE + TILE_SIZE / 2
     const y = def.tile.row * TILE_SIZE + TILE_SIZE / 2
 
-    const sprite = this.add.image(x, y, 'chars01').setFrame(SPRITE_FRAMES.NPC_MERCUS).setDepth(5)
+    const sprite = this.add.image(x, y, 'chars01')
+      .setFrame(def.frame ?? SPRITE_FRAMES.NPC_MERCUS)
+      .setDepth(5)
 
-    // Pulsing scale tween
     this.tweens.add({
       targets: sprite,
       scaleX: 1.08,
@@ -112,7 +133,6 @@ export default class WorldScene extends Phaser.Scene {
       ease: 'Sine.easeInOut',
     })
 
-    // Name label
     const label = this.add.text(x, y - 18, def.name, {
       fontSize: '9px',
       fontFamily: 'monospace',
@@ -127,12 +147,12 @@ export default class WorldScene extends Phaser.Scene {
     const px = this.player.x
     const py = this.player.y
 
-    let nearest = null
+    let nearest     = null
     let nearestDist = Infinity
 
     for (const npc of this.npcs) {
-      const dx = npc.sprite.x - px
-      const dy = npc.sprite.y - py
+      const dx   = npc.sprite.x - px
+      const dy   = npc.sprite.y - py
       const dist = Math.sqrt(dx * dx + dy * dy)
       if (dist < INTERACT_DIST && dist < nearestDist) {
         nearest = npc
@@ -141,14 +161,12 @@ export default class WorldScene extends Phaser.Scene {
     }
 
     if (nearest !== this._nearNpc) {
-      // Remove old hint
       if (this._hintSprite) {
         this._hintSprite.destroy()
         this._hintSprite = null
       }
       this._nearNpc = nearest
 
-      // Show new hint
       if (nearest) {
         this._hintSprite = this.add.image(
           nearest.sprite.x,
@@ -167,7 +185,6 @@ export default class WorldScene extends Phaser.Scene {
       }
     }
 
-    // Interact key
     if (nearest && this.player.didInteract) {
       this._triggerDialogue(nearest)
     }
@@ -180,17 +197,12 @@ export default class WorldScene extends Phaser.Scene {
     this._dialogueOpen = true
     this.player.sprite.body.setVelocity(0, 0)
 
-    // Emit to React with a callback to advance/close
     this.game.events.emit('npc-interact', {
       npcId:  npc.def.id,
       name:   npc.def.name,
       text:   line.text,
       onContinue: () => {
-        if (line.next !== null && line.next !== undefined) {
-          npc.dialogueIdx = line.next
-        } else {
-          npc.dialogueIdx = 0  // reset for replay
-        }
+        npc.dialogueIdx = line.next ?? 0
         this._dialogueOpen = false
         this.game.events.emit('dialogue-close')
       },
@@ -202,26 +214,36 @@ export default class WorldScene extends Phaser.Scene {
   _checkExits() {
     const col = Math.floor(this.player.x / TILE_SIZE)
     const row = Math.floor(this.player.y / TILE_SIZE)
+    const { map, mapW, mapH, exits } = this._zone
 
-    if (row < 0 || row >= MAP_H || col < 0 || col >= MAP_W) return
-    const tile = BIFROST_MAP[row][col]
+    if (row < 0 || row >= mapH || col < 0 || col >= mapW) return
+    const tile = map[row][col]
 
     if (tile === TILE.EXIT_WEST) {
-      this.game.events.emit('exit-reached', { direction: 'west', ...BIFROST_EXITS.west })
+      const ex = exits.west
+      if (ex?.zone) {
+        this.scene.restart({ zoneId: ex.zone, spawnOverride: ex.spawnIn })
+      } else if (ex) {
+        this.game.events.emit('exit-reached', { direction: 'west', ...ex })
+      }
     }
     if (tile === TILE.EXIT_EAST) {
-      this.game.events.emit('exit-reached', { direction: 'east', ...BIFROST_EXITS.east })
+      const ex = exits.east
+      if (ex?.zone) {
+        this.scene.restart({ zoneId: ex.zone, spawnOverride: ex.spawnIn })
+      } else if (ex) {
+        this.game.events.emit('exit-reached', { direction: 'east', ...ex })
+      }
     }
   }
 
   // ── Ambient effects ────────────────────────────────────────────────────────
 
-  _spawnManaParticles() {
-    // Find mana floor tiles and add floating dots
-    for (let row = 0; row < MAP_H; row++) {
-      for (let col = 0; col < MAP_W; col++) {
-        if (BIFROST_MAP[row][col] !== TILE.MANA_FLOOR) continue
-        if (Math.random() > 0.25) continue  // sparse
+  _spawnManaParticles(map, mapW, mapH) {
+    for (let row = 0; row < mapH; row++) {
+      for (let col = 0; col < mapW; col++) {
+        if (map[row][col] !== TILE.MANA_FLOOR) continue
+        if (Math.random() > 0.25) continue
 
         const x = col * TILE_SIZE + Math.random() * TILE_SIZE
         const y = row * TILE_SIZE + Math.random() * TILE_SIZE

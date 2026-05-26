@@ -77,9 +77,21 @@ export const BIFROST_NPCS = [
 
 // ── Zone transitions ─────────────────────────────────────────────────────────
 export const BIFROST_EXITS = {
-  west: { label: 'SKÁLHOLM — em desenvolvimento', zone: null },
+  west: { label: 'SKÁLHOLM',                       zone: 'skalholm', spawnIn: { col: 52, row: 14 } },
   east: { label: 'AETHERION — em desenvolvimento', zone: null },
 }
 
 // ── Player spawn ─────────────────────────────────────────────────────────────
 export const PLAYER_SPAWN = { col: 6, row: 12 }
+
+export const ZONE = {
+  id:    'bifrost',
+  name:  'BIFROST INFERIOR',
+  map:   BIFROST_MAP,
+  mapW:  MAP_W,
+  mapH:  MAP_H,
+  npcs:  BIFROST_NPCS,
+  exits: BIFROST_EXITS,
+  spawn: PLAYER_SPAWN,
+  music: 'bifrost-music',
+}
