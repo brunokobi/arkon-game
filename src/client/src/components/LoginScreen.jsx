@@ -30,31 +30,29 @@ export default function LoginScreen({ onLogin }) {
   const [loading, setLoading] = useState(false)
   const [error, setError]   = useState('')
 
-  // Background music — autoplay with fallback on first interaction
+  // Background music — inicia mutado (permitido pelo browser), desmuta no primeiro mousemove
   useEffect(() => {
     const audio = new Audio('/assets/medieval.ogg')
-    audio.loop = true
+    audio.loop   = true
     audio.volume = 0.28
+    audio.muted  = true
     audioRef.current = audio
 
     audio.play().catch(() => {})
 
-    const onInteract = () => {
-      audio.play().catch(() => {})
-      window.removeEventListener('mousemove', onInteract)
-      window.removeEventListener('click',     onInteract)
-      window.removeEventListener('keydown',   onInteract)
+    const unmute = () => {
+      audio.muted = false
     }
-    window.addEventListener('mousemove', onInteract, { once: true })
-    window.addEventListener('click',     onInteract, { once: true })
-    window.addEventListener('keydown',   onInteract, { once: true })
+    window.addEventListener('mousemove', unmute, { once: true })
+    window.addEventListener('click',     unmute, { once: true })
+    window.addEventListener('keydown',   unmute, { once: true })
 
     return () => {
       audio.pause()
       audio.src = ''
-      window.removeEventListener('mousemove', onInteract)
-      window.removeEventListener('click',     onInteract)
-      window.removeEventListener('keydown',   onInteract)
+      window.removeEventListener('mousemove', unmute)
+      window.removeEventListener('click',     unmute)
+      window.removeEventListener('keydown',   unmute)
     }
   }, [])
 
