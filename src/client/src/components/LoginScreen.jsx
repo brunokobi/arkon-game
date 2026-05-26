@@ -41,17 +41,20 @@ export default function LoginScreen({ onLogin }) {
 
     const onInteract = () => {
       audio.play().catch(() => {})
-      window.removeEventListener('click', onInteract)
-      window.removeEventListener('keydown', onInteract)
+      window.removeEventListener('mousemove', onInteract)
+      window.removeEventListener('click',     onInteract)
+      window.removeEventListener('keydown',   onInteract)
     }
-    window.addEventListener('click', onInteract)
-    window.addEventListener('keydown', onInteract)
+    window.addEventListener('mousemove', onInteract, { once: true })
+    window.addEventListener('click',     onInteract, { once: true })
+    window.addEventListener('keydown',   onInteract, { once: true })
 
     return () => {
       audio.pause()
       audio.src = ''
-      window.removeEventListener('click', onInteract)
-      window.removeEventListener('keydown', onInteract)
+      window.removeEventListener('mousemove', onInteract)
+      window.removeEventListener('click',     onInteract)
+      window.removeEventListener('keydown',   onInteract)
     }
   }, [])
 
