@@ -67,7 +67,7 @@ Browser game multiplayer 2D top-down no estilo Tibia — grinding, PvP, facçõe
 
 ### Modo Campanha 2D
 - [x] Phaser 4 instalado e integrado ao React
-- [x] `BootScene` — geração procedural de texturas (tiles, player, NPCs)
+- [x] `BootScene` — carrega sprites reais via spritesheet (OpenTibia Sprite Pack)
 - [x] `WorldScene` — mapa do Bifrost Inferior (Arco 0), colisão, câmera
 - [x] Jogador se move com WASD / setas, colisão com paredes
 - [x] Sistema de NPCs com zona de proximidade e indicador interativo
@@ -75,6 +75,7 @@ Browser game multiplayer 2D top-down no estilo Tibia — grinding, PvP, facçõe
 - [x] Partículas de mana nos tiles especiais
 - [x] HUD overlay (zona, nome do jogador, dica de controles)
 - [x] Sistema de saídas de zona
+- [x] Sprites reais estilo Tibia (OTSP) — tiles de dungeon, cavaleiro, figura encapuzada
 
 ### Próximos passos
 - [ ] Supabase: migrations + seed
@@ -140,6 +141,7 @@ npm run dev
 | Documento | Conteúdo |
 |---|---|
 | [`CLAUDE.md`](CLAUDE.md) | Contexto completo do projeto (stack, schema, ordem do MVP) |
+| [`src/client/public/assets/sprites/`](src/client/public/assets/sprites/) | OpenTibia Sprite Pack (CC-BY 4.0) — 12 sprite sheets, fundo magenta→alpha |
 
 ---
 

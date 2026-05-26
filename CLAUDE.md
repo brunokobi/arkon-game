@@ -15,7 +15,7 @@ Objetivo atual: construir o MVP jogável.
 
 | Camada | Tecnologia |
 |---|---|
-| Frontend | Phaser 3 + React + Vite |
+| Frontend | Phaser 4 + React + Vite |
 | UI overlay | React + Zustand |
 | Backend | Netlify Functions (serverless Node.js) |
 | Banco | Supabase (PostgreSQL + Auth + Realtime + Storage) |
@@ -46,7 +46,7 @@ arkon-game/
 │   └── prompts/cover-art.md
 ├── src/
 │   ├── client/
-│   │   ├── public/assets/{tilemaps,sprites,audio}
+│   │   ├── public/assets/sprites/          ← OpenTibia Sprite Pack (OTSP, CC-BY 4.0)
 │   │   └── src/
 │   │       ├── scenes/
 │   │       │   ├── BootScene.js
@@ -428,19 +428,47 @@ SUPABASE_SERVICE_KEY=sua-chave-de-servico
 
 ---
 
+## SPRITES — OpenTibia Sprite Pack (OTSP)
+
+`src/client/public/assets/sprites/` — 12 sprite sheets, CC-BY 4.0, fundo magenta convertido para alpha.
+
+| Sheet | Conteúdo |
+|---|---|
+| `otsp_tiles_01.png` | Chão e terrenos (16×63 frames, 32px) |
+| `otsp_walls_01/02.png` | Peças de parede isométricas |
+| `otsp_creatures_01-04.png` | Criaturas e personagens |
+| `otsp_town_01.png` | Móveis, itens, decoração |
+| `otsp_nature_01.png` | Vegetação, árvores |
+| `otsp_equipment_01.png` | Equipamentos e itens |
+| `otsp_misc_01.png` | Efeitos e miscelânea |
+| `otsp_doors_01.png` | Portas e passagens |
+
+**Frames usados** (`src/client/src/game/constants.js` → `SPRITE_FRAMES`):
+
+| Constante | Sheet | Frame | Visual |
+|---|---|---|---|
+| `FLOOR` | tiles_01 | 224 | Pedra cinza arredondada (chão de dungeon) |
+| `WALL_BG` | tiles_01 | 192 | Terra escura marrom (parede) |
+| `MANA` | tiles_01 | 304 | Tile azul (zona de mana) |
+| `EXIT` | tiles_01 | 288 | Mármore claro (saída de zona) |
+| `PLAYER` | creatures_01 | 32 | Cavaleiro de armadura prata |
+| `NPC_MERCUS` | creatures_01 | 48 | Figura encapuzada com tocha |
+
+---
+
 ## ORDEM DE IMPLEMENTAÇÃO DO MVP
 
-1. Estrutura de pastas + dependências
-2. Supabase: migrations + seed
-3. Auth: login/registro com Supabase
-4. Phaser: BootScene + WorldScene com tilemap básico
-5. Personagem se move + colide
-6. Posição sincronizada via Supabase Realtime
-7. Outros jogadores visíveis
-8. Combate básico + monstros com spawn
-9. Loot no banco
-10. Sistema de facção + Influência
-11. Missões do Arco 0
+1. ✅ Estrutura de pastas + dependências
+2. ⬜ Supabase: migrations + seed
+3. ⬜ Auth: login/registro com Supabase
+4. ✅ Phaser: BootScene + WorldScene com sprites reais (OTSP)
+5. ✅ Personagem se move + colide
+6. ⬜ Posição sincronizada via Supabase Realtime
+7. ⬜ Outros jogadores visíveis
+8. ⬜ Combate básico + monstros com spawn
+9. ⬜ Loot no banco
+10. ⬜ Sistema de facção + Influência
+11. ⬜ Missões do Arco 0
 
 ---
 
