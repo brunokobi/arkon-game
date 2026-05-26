@@ -1,15 +1,7 @@
 import Phaser from 'phaser'
-import { TILE, TILE_SIZE, COLORS, INTERACT_DIST } from '../constants.js'
+import { TILE, TILE_SIZE, COLORS, INTERACT_DIST, SPRITE_FRAMES } from '../constants.js'
 import { BIFROST_MAP, BIFROST_NPCS, BIFROST_EXITS, PLAYER_SPAWN, MAP_W, MAP_H } from '../maps/bifrost.js'
 import Player from '../entities/Player.js'
-
-const TILE_TEXTURE = {
-  [TILE.FLOOR]:      'tile_floor',
-  [TILE.WALL]:       'tile_wall',
-  [TILE.MANA_FLOOR]: 'tile_mana',
-  [TILE.EXIT_WEST]:  'tile_exit',
-  [TILE.EXIT_EAST]:  'tile_exit',
-}
 
 export default class WorldScene extends Phaser.Scene {
   constructor() {
@@ -31,8 +23,7 @@ export default class WorldScene extends Phaser.Scene {
         const cx = x + TILE_SIZE / 2
         const cy = y + TILE_SIZE / 2
 
-        const tex = TILE_TEXTURE[tileId] ?? 'tile_floor'
-        this.add.image(cx, cy, tex).setDepth(0)
+        this._renderTile(tileId, cx, cy)
 
         if (tileId === TILE.WALL) {
           const body = this.wallGroup.create(cx, cy, 'pixel')
@@ -87,12 +78,26 @@ export default class WorldScene extends Phaser.Scene {
 
   // ── NPC ────────────────────────────────────────────────────────────────────
 
+  _renderTile(tileId, cx, cy) {
+    if (tileId === TILE.WALL) {
+      // Dark earth base
+      this.add.image(cx, cy, 'tiles', SPRITE_FRAMES.WALL_BG).setDepth(0)
+      // Stone wall object on top (isometric, gives depth like Tibia)
+      this.add.image(cx, cy, 'walls', SPRITE_FRAMES.WALL_OBJ).setDepth(1)
+    } else if (tileId === TILE.MANA_FLOOR) {
+      this.add.image(cx, cy, 'tiles', SPRITE_FRAMES.MANA).setDepth(0)
+    } else if (tileId === TILE.EXIT_WEST || tileId === TILE.EXIT_EAST) {
+      this.add.image(cx, cy, 'tiles', SPRITE_FRAMES.EXIT).setDepth(0)
+    } else {
+      this.add.image(cx, cy, 'tiles', SPRITE_FRAMES.FLOOR).setDepth(0)
+    }
+  }
+
   _createNpc(def) {
     const x = def.tile.col * TILE_SIZE + TILE_SIZE / 2
     const y = def.tile.row * TILE_SIZE + TILE_SIZE / 2
 
-    const tex = `npc_${def.id}`
-    const sprite = this.add.image(x, y, tex).setDepth(5)
+    const sprite = this.add.image(x, y, 'chars02').setFrame(SPRITE_FRAMES.NPC_MERCUS).setDepth(5)
 
     // Pulsing scale tween
     this.tweens.add({

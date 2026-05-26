@@ -1,15 +1,15 @@
 import Phaser from 'phaser'
-import { PLAYER_SPEED, TILE_SIZE } from '../constants.js'
+import { PLAYER_SPEED, TILE_SIZE, SPRITE_FRAMES } from '../constants.js'
 
 export default class Player {
   constructor(scene, col, row) {
     const x = col * TILE_SIZE + TILE_SIZE / 2
     const y = row * TILE_SIZE + TILE_SIZE / 2
 
-    // Physics sprite using the pre-generated texture
-    this.sprite = scene.physics.add.sprite(x, y, 'player')
+    this.sprite = scene.physics.add.sprite(x, y, 'chars01')
+    this.sprite.setFrame(SPRITE_FRAMES.PLAYER)
     this.sprite.setDepth(10)
-    this.sprite.body.setSize(14, 14)
+    this.sprite.body.setSize(18, 18)
     this.sprite.body.setCollideWorldBounds(true)
 
     // Controls (WASD + arrows)

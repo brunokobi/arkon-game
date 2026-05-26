@@ -8,6 +8,21 @@ export const TILE = {
   EXIT_EAST:  5,
 }
 
+// Frame indices for the OTSP sprite sheets (32×32 grid, 16 cols)
+export const SPRITE_FRAMES = {
+  // tiles_01.png
+  FLOOR:      0,    // row 0  — gray cobblestone path
+  WALL_BG:    160,  // row 10 — very dark earth (wall fill)
+  MANA:       224,  // row 14 — purplish stone (mana zone)
+  EXIT:       288,  // row 18 — light marble (exit zone)
+  // walls_01.png
+  WALL_OBJ:   2,    // row 0, col 2 — stone wall piece
+  // creatures_01.png
+  PLAYER:     64,   // row 4 — flesh-tone humanoid
+  // creatures_02.png
+  NPC_MERCUS: 0,    // row 0 — orc trader
+}
+
 export const COLORS = {
   wall:       0x16162a,
   wallTop:    0x252542,
