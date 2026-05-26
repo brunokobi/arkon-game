@@ -27,6 +27,9 @@ export default class Player {
     this._nextAttack = 0
     this._iframesEnd = 0
 
+    // Last facing direction: 's' | 'n' | 'e' | 'w'
+    this._facing = 's'
+
     // Controls (WASD + arrows + Space to attack)
     const K = Phaser.Input.Keyboard.KeyCodes
     this.keys = scene.input.keyboard.addKeys({
@@ -58,12 +61,15 @@ export default class Player {
 
     body.setVelocity(vx, vy)
 
-    if (vx < 0) this.sprite.setFlipX(true)
-    if (vx > 0) this.sprite.setFlipX(false)
+    if (vx < 0) { this.sprite.setFlipX(true);  this._facing = 'w' }
+    if (vx > 0) { this.sprite.setFlipX(false); this._facing = 'e' }
+    // Vertical overrides horizontal for facing/animation
+    if (vy < 0) { this._facing = 'n' }
+    if (vy > 0) { this._facing = 's' }
 
-    // Walk animation
     if (vx !== 0 || vy !== 0) {
-      this.sprite.play('player-walk', true)
+      const anim = (this._facing === 'n') ? 'walk-n' : 'walk-s'
+      this.sprite.play(anim, true)
     } else {
       this.sprite.stop()
       this.sprite.setFrame(SPRITE_FRAMES.PLAYER)
@@ -81,8 +87,14 @@ export default class Player {
 
   /** Position of the melee hitbox in front of the player. */
   get attackOrigin() {
-    const dir = this.sprite.flipX ? -1 : 1
-    return { x: this.sprite.x + dir * ATTACK_RANGE, y: this.sprite.y }
+    const offsets = {
+      s: { x: 0,              y:  ATTACK_RANGE },
+      n: { x: 0,              y: -ATTACK_RANGE },
+      e: { x:  ATTACK_RANGE,  y: 0 },
+      w: { x: -ATTACK_RANGE,  y: 0 },
+    }
+    const o = offsets[this._facing] ?? offsets.s
+    return { x: this.sprite.x + o.x, y: this.sprite.y + o.y, dir: this._facing }
   }
 
   /** Apply damage; returns actual damage taken (0 if invulnerable). */

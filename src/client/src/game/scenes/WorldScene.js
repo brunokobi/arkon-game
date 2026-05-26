@@ -183,16 +183,42 @@ export default class WorldScene extends Phaser.Scene {
   }
 
   _doPlayerAttack() {
-    const { x: ax, y: ay } = this.player.attackOrigin
+    const { x: ax, y: ay, dir } = this.player.attackOrigin
 
-    // Visual slash
+    // ── Slash lines ────────────────────────────────────────────────────────────
     const slash = this.add.graphics().setDepth(12)
-    slash.fillStyle(0xffffff, 0.65)
-    slash.fillRect(ax - 16, ay - 12, 32, 24)
-    this.tweens.add({
-      targets: slash, alpha: 0, duration: 160,
-      onComplete: () => slash.destroy(),
-    })
+    slash.lineStyle(3, 0xfff0aa, 0.95)
+    if (dir === 'e' || dir === 'w') {
+      const s = dir === 'e' ? 1 : -1
+      slash.beginPath(); slash.moveTo(ax - s * 12, ay - 14); slash.lineTo(ax + s * 14, ay + 10); slash.strokePath()
+      slash.beginPath(); slash.moveTo(ax + s * 10, ay - 10); slash.lineTo(ax - s * 10, ay + 14); slash.strokePath()
+    } else {
+      // north / south — horizontal sweep
+      slash.beginPath(); slash.moveTo(ax - 14, ay - 10); slash.lineTo(ax + 14, ay + 8); slash.strokePath()
+      slash.beginPath(); slash.moveTo(ax + 10, ay - 12); slash.lineTo(ax - 10, ay + 10); slash.strokePath()
+    }
+    this.tweens.add({ targets: slash, alpha: 0, duration: 180, onComplete: () => slash.destroy() })
+
+    // ── Sparks ─────────────────────────────────────────────────────────────────
+    for (let i = 0; i < 5; i++) {
+      const angle = (i / 5) * Math.PI * 2
+      const spark = this.add.graphics().setDepth(13)
+      spark.fillStyle(0xffdd44, 1)
+      spark.fillCircle(0, 0, 2)
+      spark.setPosition(ax, ay)
+      this.tweens.add({
+        targets: spark,
+        x: ax + Math.cos(angle) * 20,
+        y: ay + Math.sin(angle) * 20,
+        alpha: 0,
+        duration: 220,
+        ease: 'Quad.easeOut',
+        onComplete: () => spark.destroy(),
+      })
+    }
+
+    // ── Attack sound ───────────────────────────────────────────────────────────
+    this._playAttackSound()
 
     // Hit all enemies in range
     let killedAny = false
@@ -209,6 +235,38 @@ export default class WorldScene extends Phaser.Scene {
     }
 
     if (killedAny) this._emitPlayerStats()
+  }
+
+  _playAttackSound() {
+    const ctx = this.sound.context
+    if (!ctx) return
+    const t = ctx.currentTime
+
+    // Swoosh — sawtooth sweep from 460 Hz → 70 Hz
+    const osc  = ctx.createOscillator()
+    const gOsc = ctx.createGain()
+    osc.connect(gOsc); gOsc.connect(ctx.destination)
+    osc.type = 'sawtooth'
+    osc.frequency.setValueAtTime(460, t)
+    osc.frequency.exponentialRampToValueAtTime(70, t + 0.17)
+    gOsc.gain.setValueAtTime(0.18, t)
+    gOsc.gain.exponentialRampToValueAtTime(0.001, t + 0.17)
+    osc.start(t); osc.stop(t + 0.17)
+
+    // Impact — noise burst at t+0.06
+    const bufLen = Math.ceil(ctx.sampleRate * 0.07)
+    const buf    = ctx.createBuffer(1, bufLen, ctx.sampleRate)
+    const data   = buf.getChannelData(0)
+    for (let i = 0; i < bufLen; i++) data[i] = (Math.random() * 2 - 1) * (1 - i / bufLen)
+    const noise  = ctx.createBufferSource()
+    const filt   = ctx.createBiquadFilter()
+    const gNoise = ctx.createGain()
+    noise.buffer = buf
+    filt.type = 'bandpass'; filt.frequency.value = 1100; filt.Q.value = 0.8
+    noise.connect(filt); filt.connect(gNoise); gNoise.connect(ctx.destination)
+    gNoise.gain.setValueAtTime(0.14, t + 0.06)
+    gNoise.gain.exponentialRampToValueAtTime(0.001, t + 0.13)
+    noise.start(t + 0.06)
   }
 
   _onLevelUp() {

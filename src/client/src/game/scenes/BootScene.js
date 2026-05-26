@@ -64,10 +64,17 @@ export default class BootScene extends Phaser.Scene {
   }
 
   _createAnimations() {
-    // Knight walk — 3-frame south-facing cycle; flipX handles west direction
+    // South / east walk — flipX for west
     this.anims.create({
-      key: 'player-walk',
+      key: 'walk-s',
       frames: this.anims.generateFrameNumbers('chars01', { frames: [32, 33, 34] }),
+      frameRate: 8,
+      repeat: -1,
+    })
+    // North walk (knight facing away from camera)
+    this.anims.create({
+      key: 'walk-n',
+      frames: this.anims.generateFrameNumbers('chars01', { frames: [38, 39, 40] }),
       frameRate: 8,
       repeat: -1,
     })
