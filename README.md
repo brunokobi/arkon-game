@@ -129,6 +129,12 @@ npm run dev
 | [`docs/gameplay/events.md`](docs/gameplay/events.md) | O Pleito, eventos sazonais e emergentes |
 | [`docs/glossary.md`](docs/glossary.md) | Glossário dos termos do universo |
 
+### Livro
+
+| Documento | Conteúdo |
+|---|---|
+| [`docs/ARKON-Livro-Editado-v2.docx`](docs/ARKON-Livro-Editado-v2.docx) | Arkon: A Fenda do Aglomerado — Livro I (versão editada v2) |
+
 ### Técnico
 
 | Documento | Conteúdo |
