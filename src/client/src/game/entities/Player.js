@@ -62,18 +62,22 @@ export default class Player {
 
     body.setVelocity(vx, vy)
 
-    if (vx < 0) { this.sprite.setFlipX(true);  this._facing = 'w' }
-    if (vx > 0) { this.sprite.setFlipX(false); this._facing = 'e' }
-    // Vertical overrides horizontal for facing/animation
-    if (vy < 0) { this._facing = 'n' }
-    if (vy > 0) { this._facing = 's' }
+    // Vertical overrides horizontal for facing direction
+    if (vx < 0) this._facing = 'w'
+    if (vx > 0) this._facing = 'e'
+    if (vy < 0) this._facing = 'n'
+    if (vy > 0) this._facing = 's'
+
+    const ANIM = { s: 'corvo-s', e: 'corvo-e', w: 'corvo-w', n: 'corvo-n' }
+    const IDLE = { s: 'cs0',     e: 'ce0',     w: 'cw0',     n: 'cn0'     }
 
     if (vx !== 0 || vy !== 0) {
-      const anim = (this._facing === 'n') ? 'corvo-n' : 'corvo-s'
-      this.sprite.play(anim, true)
+      this.sprite.setFlipX(false)
+      this.sprite.play(ANIM[this._facing], true)
     } else {
       this.sprite.stop()
-      this.sprite.setFrame('cs0')
+      this.sprite.setFlipX(false)
+      this.sprite.setFrame(IDLE[this._facing])
     }
   }
 

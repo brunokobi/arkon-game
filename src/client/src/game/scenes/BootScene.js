@@ -66,37 +66,34 @@ export default class BootScene extends Phaser.Scene {
 
   _createAnimations() {
     // ── Corvo character — custom 64×64 frames ──────────────────────────────────
+    // Layout: each row = 1 walk frame; each col = 1 direction
+    //   col 0 (x=0):   South  — face visible
+    //   col 1 (x=64):  East   — right profile
+    //   col 2 (x=128): West   — left profile (back visible)
+    //   col 3 (x=192): North  — full back to camera
     const tex = this.textures.get('corvo')
-    // South frames (face visible, front view)
-    tex.add('cs0', 0,   0, 224, 64, 64)  // idle south
-    tex.add('cs1', 0,  64, 224, 64, 64)  // walk south 1
-    tex.add('cs2', 0,   0, 288, 64, 64)  // walk south 2
-    // North frames (back to camera)
-    tex.add('cn0', 0, 128, 224, 64, 64)  // idle north
-    tex.add('cn1', 0, 192, 224, 64, 64)  // walk north 1
-    tex.add('cn2', 0, 128, 288, 64, 64)  // walk north 2
+    tex.add('cs0', 0,   0, 224, 64, 64)
+    tex.add('cs1', 0,   0, 288, 64, 64)
+    tex.add('cs2', 0,   0, 352, 64, 64)
+    tex.add('ce0', 0,  64, 224, 64, 64)
+    tex.add('ce1', 0,  64, 288, 64, 64)
+    tex.add('ce2', 0,  64, 352, 64, 64)
+    tex.add('cw0', 0, 128, 224, 64, 64)
+    tex.add('cw1', 0, 128, 288, 64, 64)
+    tex.add('cw2', 0, 128, 352, 64, 64)
+    tex.add('cn0', 0, 192, 224, 64, 64)
+    tex.add('cn1', 0, 192, 288, 64, 64)
+    tex.add('cn2', 0, 192, 352, 64, 64)
     // Green mana sword (equipment row y=64)
     tex.add('sword', 0, 0, 64, 32, 32)
 
-    this.anims.create({
-      key: 'corvo-s',
-      frames: [
-        { key: 'corvo', frame: 'cs0' },
-        { key: 'corvo', frame: 'cs1' },
-        { key: 'corvo', frame: 'cs2' },
-      ],
-      frameRate: 7,
-      repeat: -1,
+    const makeAnim = (key, frames) => this.anims.create({
+      key, repeat: -1, frameRate: 7,
+      frames: frames.map(f => ({ key: 'corvo', frame: f })),
     })
-    this.anims.create({
-      key: 'corvo-n',
-      frames: [
-        { key: 'corvo', frame: 'cn0' },
-        { key: 'corvo', frame: 'cn1' },
-        { key: 'corvo', frame: 'cn2' },
-      ],
-      frameRate: 7,
-      repeat: -1,
-    })
+    makeAnim('corvo-s', ['cs0', 'cs1', 'cs2'])
+    makeAnim('corvo-e', ['ce0', 'ce1', 'ce2'])
+    makeAnim('corvo-w', ['cw0', 'cw1', 'cw2'])
+    makeAnim('corvo-n', ['cn0', 'cn1', 'cn2'])
   }
 }
