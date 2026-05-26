@@ -78,7 +78,7 @@ Kobi o criou como **failsafe** nos momentos finais de sua existência: um mundo 
 
 ### Comandos não documentados
 
-O Tridente possui mais de três comandos. Os adicionais foram descobertos por Varen e Eira durante os eventos do Livro I. O **sexto comando** — o que eles decidiram não usar — ainda está ativo no terminal raiz.
+O Tridente possui mais de três comandos. Os adicionais foram descobertos por Varen e Eira durante os eventos do Livro I, quando tocaram a forma no terminal raiz da câmara dentro da Jötunroc e o sistema os reconheceu como administradores. O **sexto comando** — o que decidiram não usar — ainda está ativo no terminal raiz, esperando uma intenção que não chegou.
 
 ### Por que os deuses não podem usar o Tridente
 
@@ -94,9 +94,11 @@ O sacrifício de Kobi não foi um processo limpo. A liberação de energia foi s
 
 A **Jötunroc** nasceu no centro do continente, onde antes havia uma planície extraordinariamente fértil e nivelada — evidência de intervenção intencional no processo geológico. A escala das formações é incompatível com qualquer processo natural que estudiosos consigam explicar.
 
-**A Jötunroc é intransponível por cima** — não hipérbole, é física. Os picos mais altos existem em estado de compilação incompleta: aparecem e desaparecem em intervalos sem padrão previsível, materializando-se como sólidos quando um ser tenta cruzá-los e dissolvendo-se logo depois. Expedições de escalada foram tentadas ao longo de séculos. A conclusão consistente é que a cordilheira não existe de forma estável suficiente para sustentar a travessia.
+**A Jötunroc era intransponível por cima** durante séculos — não hipérbole, era física. Os picos mais altos existiam em estado de compilação incompleta: apareciam e desapareciam em intervalos sem padrão previsível, materializando-se como sólidos quando um ser tentava cruzá-los e dissolvendo-se logo depois. Expedições de escalada foram tentadas ao longo dos séculos. A conclusão consistente era que a cordilheira não existia de forma estável o suficiente para sustentar a travessia.
 
-Ela pode ser cruzada **por baixo** — pelo Bifrost Inferior.
+**Após os eventos do Livro I**, oito meses depois do banimento de Molusk, o último pico instável desapareceu e a cordilheira estabilizou completamente — com contornos que correspondem ao mapa deixado por Kobi nos fragmentos do Runa-Arché. A Jötunroc passou a ser escalável. O pico mais alto é agora o único ponto de Arkon de onde se vê os dois lados ao mesmo tempo.
+
+Pode ser cruzada **por baixo** — pelo Bifrost Inferior — e agora também **por cima**, pelas rotas mapeadas pelos cartógrafos depois da estabilização.
 
 ---
 
@@ -121,3 +123,27 @@ A consequência mais visível: os **vazamentos de mana em Skálholm** — que os
 São propositais. Foram criados por Molusk via o terminal de Helvault.
 
 **A dependência é o produto. O carisma é a embalagem.**
+
+---
+
+## A Casa de Kobi
+
+Entre a Jötunroc e o Mare Ignotum existe um litoral que os mapas de Kobi marcavam com um símbolo que ninguém conseguiu interpretar de longe. Kobi construiu uma casa ali — uma estrutura pequena, de pedra estável, com mesa, dois bancos, e na parede a inscrição em Runa-Arché:
+
+> *"Se você chegou aqui, o sistema funcionou melhor do que projetei. Sente. Descanse. O trabalho de reconstituir Arkon vai levar tempo e vai ser feito por pessoas que não sou eu, que é como deveria ser. Deixei chá. Deve estar frio."*
+
+Havia dois copos na mesa — preservados por séculos. Kobi calculou a probabilidade de que seriam dois mortais a chegar. Ou calculou que qualquer mortal que chegasse ia querer trazer alguém. Mesma lógica.
+
+O lugar só se tornou acessível após a estabilização da Jötunroc e a escalada de Varen e Eira pelo lado norte, descendo pelo lado leste pela primeira vez na história.
+
+---
+
+## As Inscrições do Bifrost
+
+As paredes do checkpoint central do Bifrost Inferior acumularam inscrições ao longo dos séculos. As mais antigas eram anônimas. As mais recentes também.
+
+| Inscrição | Origem | Contexto |
+|---|---|---|
+| *"Não existe lado certo num mundo rachado. Existe o lado que você aguentou mais tempo."* | Anônima — gravada há tempo suficiente para ninguém lembrar quem a fez | Inscrição original do checkpoint |
+| *"O meio não é compromisso. É onde os dois lados chegam quando estão prontos."* | Anônima — aparecida durante o período do acordo | Segundo o registro de Mercus: autoria não identificada |
+| *"Ainda aprendendo."* | Anônima — dois meses após o acordo | Mercus verificou: os Eidolon voltaram naquela noite. Anotou no registro: *Kobi comenta o andamento.* |

@@ -44,6 +44,14 @@ Os Convocados são recrutados para "reparar" o que nunca vai ser reparado. Os Su
 
 **A dependência é o produto. O carisma é a embalagem.**
 
+### O Banimento
+
+Após os eventos do Livro I, Molusk é banido — o resultado do acordo que Varen e Eira mediaram. Sem ele para operá-lo, o terminal de Helvault fica inativo: não destruído, não removido. Apenas presente da forma que estruturas antigas são presentes quando o propósito original cessou mas a construção é sólida demais para ignorar.
+
+Os efeitos imediatos do banimento foram duplos:
+- Em Skálholm, os vazamentos propositais cessaram — mas os dutos danificados por décadas de pressão artificial criaram instabilidade que o sistema antigo de Molusk pelo menos mascarava. Os Convocados mais velhos descrevem a mana como "mais limpa em alguns bairros" e "estranha em outros".
+- A Jötunroc estabilizou oito meses depois. Os estudiosos debatem a conexão. A Ordo Bifrost não debateu — Mercus apenas anotou a correlação no registro.
+
 ---
 
 ## Bolzarius, o Praetor Summus (leste)
@@ -84,9 +92,17 @@ Qualquer texto com versão alternativa foi removido dos arquivos públicos de Ae
 
 | Herdeiro | Título | Papel real |
 |---|---|---|
-| **Primus** | O Herdeiro Técnico | Profissionalizou a corrupção do pai. Mais eficiente que Bolzarius, mais frio. Forma Eira desde os 7 anos para sobreviver antes de governar |
-| **Kaos** | O Herdeiro Imune | Destrói por tédio, nunca responde. Impossível de controlar ou responsabilizar |
-| **Valka** | A Herdeira Invisível | Mais poderosa que os dois irmãos — e ninguém percebeu. Publica o primeiro mapa unificado de Arkon após o banimento de Molusk |
+| **Primus** | O Herdeiro Técnico | Profissionalizou a corrupção do pai. Mais eficiente que Bolzarius, mais frio. Formou Eira desde os 7 anos para sobreviver antes de governar. Recomendou negociação em vez de eliminação de Eira — "mártir consolida o que ela espalhou" |
+| **Kaos** | O Herdeiro Imune | Destrói por tédio, nunca responde. Impossível de controlar ou responsabilizar. Copiou a chave de Bolzarius por hábito, não por necessidade. Decidiu não ajudar Eira e não denunciá-la — pediu apenas que ela o contasse se funcionou |
+| **Valka** | A Herdeira Invisível | Mais poderosa que os dois irmãos. Sabia da lista há 12 anos (desde os 20). Encontrou 32 nomes na versão original. "Apodreceu por dentro" escolhendo omissão — e deu a Eira a validação de quem sabe o custo. Publica o primeiro mapa unificado de Arkon após o banimento de Molusk |
+
+### A Reação à Divulgação
+
+Quando Eira divulgou a lista de cinquenta e três nomes, Bolzarius leu o documento uma vez. Ficou em silêncio por dez minutos. Chamou Primus. Depois chamou Valka — não Primus de volta, Valka, porque Valka raramente falava em reuniões que não havia convocado, e quando falava era porque havia chegado a uma conclusão.
+
+Primus e Valka, independentemente, recomendaram negociação.
+
+Bolzarius ofereceu acordo. Não por concordância — por cálculo. Mas os termos mostraram que decidiu lutar pela versão dele do sistema com mais energia do que Eira esperava. Cedeu em pontos visíveis. Não cedeu em pontos estruturais. O que veio depois seria definido por essa diferença.
 
 ---
 

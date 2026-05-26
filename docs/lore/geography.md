@@ -11,6 +11,8 @@
 | Favela oeste | **Skálholm** | Labiríntica, mana vaza por design de Molusk |
 | Metrópole leste | **Aetherion** | Eficiente, privatizada, praias inacessíveis |
 | Mar a leste | **Mare Ignotum** | Desconhecido — nenhum mapa oficial tem a outra margem |
+| Costa leste da Jötunroc | **Casa de Kobi** | Entre a cordilheira e o mare — só acessível após escalada da Jötunroc |
+| Câmara interna | **Câmara do Sistema** | Dentro da Jötunroc, acessada pelo corredor não documentado do Bifrost |
 
 ---
 
@@ -107,6 +109,16 @@ Os mapas **públicos** mostram um corredor direto de travessia rápida. A versã
 - Pelo menos uma saída que emerge numa zona sem classificação de facção
 - A localização de **Niflheim** — zona que os Autônomos descrevem como "uma parte do projeto que Kobi não chegou a terminar"
 
+### A Câmara Interna — Acesso pelo Corredor Não Documentado
+
+Dentro do Bifrost Inferior existe um corredor que não aparece em nenhum mapa oficial — estreito, mal iluminado, com o tipo de ar que ficou fechado por tempo demais. Ao final deste corredor há uma abertura na pedra que leva a uma câmara dentro da Jötunroc.
+
+A câmara é grande — maior do que a abertura sugere. As paredes têm linhas finas de luz que pulsam num ritmo não regular. No centro, uma forma que não tem geometria que o cérebro aceita de imediato, mas que tem presença. Ao redor, inscrições em Runa-Arché — não fragmentos, mas texto completo.
+
+Esta câmara é onde o sistema de Kobi ainda está funcionando ativamente. Os Eidolon habitam o espaço. O Tridente é acessível — não fisicamente, mas em sentido que quem chega sente em vez de ver.
+
+O sistema reconhece mortais como administradores. Esta é a descoberta mais consequente dos eventos do Livro I.
+
 ### Ponto de partida — Missão 0.1 (Sine Nomine)
 
 Todo jogador começa no Bifrost Inferior — sem id, sem facção, sem certeza do que vem a seguir. A inscrição nas paredes do checkpoint central:
@@ -117,11 +129,34 @@ Todo jogador começa no Bifrost Inferior — sem id, sem facção, sem certeza d
 
 ## A Jötunroc
 
-A cordilheira nasceu do sacrifício de Kobi. Sua física é diferente de formas sutis mas perturbadoras:
+A cordilheira nasceu do sacrifício de Kobi. Sua física foi, durante séculos, diferente de formas sutis mas perturbadoras:
 
-- A rocha sob as mãos é sólida até não ser — não de forma que você caia, mas de forma que precisa recalibrar constantemente a expectativa do que está pisando
-- A temperatura da rocha fica levemente mais fria antes de perder solidez — segundos antes, tempo suficiente para ajustar o passo
-- Os picos mais altos existem em estado de compilação incompleta — aparecem e desaparecem sem padrão previsível
-- Os **Eidolon** aparecem na face rochosa, consistentemente à frente e acima, como sinalizadores que marcam a rota. Seguir a concentração deles é seguir a densidade do código original de Kobi
+- A rocha sob as mãos era sólida até não ser — não de forma que você caísse, mas de forma que precisava recalibrar constantemente a expectativa do que estava pisando
+- A temperatura da rocha ficava levemente mais fria antes de perder solidez — segundos antes, tempo suficiente para ajustar o passo
+- Os picos mais altos existiam em estado de compilação incompleta — apareciam e desapareciam sem padrão previsível
 
-Após os eventos do Livro I, a Jötunroc passou a ser **escalável** — com rotas mapeadas e o ponto de observação no pico mais alto do qual se vê os dois lados ao mesmo tempo.
+### A Estabilização
+
+**Oito meses após o banimento de Molusk**, o último pico da Jötunroc desapareceu numa terça-feira — sem tremor, sem explosão. Na manhã seguinte, a face norte tinha contornos que correspondiam, pela primeira vez, ao mapa que Kobi havia deixado nos fragmentos do Runa-Arché.
+
+A cordilheira estava completa. Podia ser escalada.
+
+Mercus havia colocado cartógrafos nos pontos de observação três meses antes. A notícia chegou ao Bifrost antes de chegar a qualquer facção.
+
+### A Escalada — Primeiro Registro
+
+Varen e Eira subiram pela **face norte** no dia seguinte à confirmação da estabilização. A subida levou seis horas. Rocha sólida e consistente, o que se revelou mais difícil que escalar a Jötunroc instável — o corpo havia aprendido a compensar a inconsistência e precisava agora desaprender.
+
+Do pico mais alto, a primeira vista completa de Arkon:
+- A oeste: Skálholm — densa, vertical, caótica, com os dutos de mana emitindo luminosidade mais consistente após o fim dos vazamentos propositais
+- A leste: Aetherion — as Torres, o Mare Ignotum ao fundo, laranja na luz da manhã
+
+Desceram pelo **lado leste** — pela primeira vez na história — até o litoral entre a cordilheira e o mare, onde encontraram a casa de Kobi.
+
+### O Pico de Observação
+
+No pico mais alto da Jötunroc existe o único ponto em Arkon de onde se vê os dois lados ao mesmo tempo. O primeiro mapa unificado, publicado por Valka Solenne, marca esse ponto com uma estrela — sem explicação adicional. Ninguém perguntou por quê ela colocou a estrela. Quem precisava saber, sabia.
+
+### Os Eidolon na Jötunroc
+
+Os **Eidolon** aparecem na face rochosa, consistentemente à frente e acima, como sinalizadores que marcam a rota. Seguir a concentração deles é seguir a densidade do código original de Kobi. Na câmara interna — acessível pelo corredor não documentado do Bifrost — os Eidolon tornaram-se mais nítidos após o acordo de Varen e Eira: antes tinham qualidade de fumaça com forma; depois, qualidade de pessoas filmadas em luz fraca.

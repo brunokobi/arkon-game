@@ -162,13 +162,18 @@ arkon-game/
 
 | Nome | Papel | Facção |
 |---|---|---|
+| Varen | Desertor do Bonde, co-mediador da Ordo Bifrost — carregou o arquivo que revelou o sistema | Sem facção (ex-Bonde) |
+| Eira Solenne | Neta de Bolzarius, co-mediadora da Ordo Bifrost — filha de Primus, formada desde os 7 anos | Sem facção (ex-Gestão) |
 | Drena | Controla o Nó IX — duto sob o Bifrost, cobra dos dois lados | Neutro |
-| Aerugo | Delator domesticado, rosto da campanha anticorrupção de Molusk | Bonde |
+| Aerugo | Delator domesticado, rosto da campanha anticorrupção de Molusk; vende chá no checkpoint | Bonde |
 | Murus | Veterano que viu tudo, assinou tudo, guarda tudo | Gestão |
-| Graxis | Capitão de rua que acredita no que fala — o mais perigoso | Bonde |
+| Graxis | Capitão de rua que acredita no que faz — o mais perigoso; sabia de tudo há 20 anos | Bonde |
 | Stigma | Tenente que preenche relatório sem perguntas | Gestão |
 | Vacuus | Assessor que sobreviveu a quatro gestões | Gestão |
-| Mercus | Atravessador dos Autônomos, compra e vende dos dois lados | Neutro |
+| Mercus | Atravessador dos Autônomos, compra e vende dos dois lados; preside negociações | Neutro |
+| Primus | Herdeiro técnico de Bolzarius; formou Eira, recomendou negociar em vez de eliminar | Gestão |
+| Kaos | Herdeiro imune; destrói por tédio, nunca responde | Gestão |
+| Valka | Herdeira invisível; publicou o primeiro mapa unificado de Arkon | Gestão |
 
 ---
 
@@ -177,11 +182,11 @@ arkon-game/
 | Local | Nome | Descrição |
 |---|---|---|
 | Planeta | Arkon | O mundo rachado |
-| Cordilheira | Jötunroc | Barreira intransponível no centro |
+| Cordilheira | Jötunroc | Barreira central — intransponível por séculos, estabilizou após o banimento de Molusk |
 | Grande Túnel | Bifrost Inferior | Única passagem, cobrada pela Ordo Bifrost |
 | Zona oculta | Niflheim | Dentro do Túnel, não consta em mapas oficiais |
 | Favela oeste | Skálholm | Labiríntica, mana vaza por design de Molusk |
-| Metrópole leste | Aetherion | Eficiente, privatizada, praias inacessíveis |
+| Metrópole leste | Aetherion | Eficiente, privatizada, praias em processo de reabertura parcial |
 | Mar a leste | Mare Ignotum | Desconhecido |
 | Zonas Skálholm | Helvault, Labyrnis, Falcorum, Venarum, Austral Skál | — |
 | Zonas Aetherion | Turris Magna, Liminar, Portus Aer, Agora Ferrum, Forgia | — |

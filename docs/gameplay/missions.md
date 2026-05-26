@@ -19,9 +19,13 @@ Cada missão principal existe em três camadas de narrativa. O jogador acessa ca
 
 O jogador acorda no Bifrost Inferior sem ID, sem facção, sem memória do que aconteceu antes. A Ordo Bifrost não oferece orientação — oferece pedágio.
 
-A inscrição nas paredes do checkpoint central, gravada há tempo suficiente para que ninguém lembre quem a fez:
+As inscrições nas paredes do checkpoint central acumulam-se ao longo do tempo. Algumas foram gravadas séculos atrás e ninguém recorda quem as fez. Outras são mais recentes — aparecidas depois dos eventos que mudaram Arkon. Nenhuma tem assinatura. Todas foram verificadas por Mercus.
 
-> *"Não existe lado certo num mundo rachado. Existe o lado que você aguentou mais tempo."*
+| Inscrição | Quando disponível |
+|---|---|
+| *"Não existe lado certo num mundo rachado. Existe o lado que você aguentou mais tempo."* | Desde o início |
+| *"O meio não é compromisso. É onde os dois lados chegam quando estão prontos."* | Após os eventos do Livro I |
+| *"Ainda aprendendo."* | Versão pós-acordo |
 
 ---
 
@@ -319,7 +323,7 @@ O que você faz com o conhecimento do Protocolo Cinza é registrado. Afeta como 
 **"A descoberta"**
 `Gradus 15+ · Qualquer facção · Dispara uma vez no servidor`
 
-**Condição de disparo:** Jogador com acesso de Supervisor (Bonde) ou Analista (Gestão) que tenha completado pelo menos uma missão oculta (1A.5 ou 1B.5). Acesso de permissão específico que o sistema não bloqueou adequadamente — o mesmo erro de permissão que abriu o arquivo para Varen.
+**Condição de disparo:** Jogador com acesso de Supervisor (Bonde) ou Analista (Gestão) que tenha completado pelo menos uma missão oculta (1A.5 ou 1B.5). Acesso de permissão específico que o sistema não bloqueou adequadamente — o mesmo erro de permissão que abriu o arquivo para Varen, quando tinha dezenove anos e entrou numa câmara que não deveria ter aberto.
 
 **O que acontece:** Numa auditoria de rotina, os números não batem. Não de forma óbvia — do tipo sutil, onde um fluxo de saída é sistematicamente 2% maior que o fluxo de entrada correspondente. 2% por duto. Nove dutos principais. Ao longo de quanto tempo os registros existem.
 
@@ -329,11 +333,93 @@ Há uma explicação simples: erro de medição acumulado. E uma explicação me
 
 No arquivo secundário, três camadas abaixo, em sintaxe do Runa-Arché com uma nota de rodapé em caligrafia diferente de tudo ao redor:
 
-> *"O que foi partido pode ser inteiro. O que foi instalado pode ser removido. O que foi esquecido ainda existe."*
+> *"O que foi instalado pode ser removido."*
+> *"O que foi partido pode ser inteiro."*
+> *"O que foi escondido pode ser visto, se o mortal certo chegar."*
 
 E coordenadas. Para um ponto dentro da Jötunroc.
 
+O arquivo também contém uma lista — quarenta e três nomes. Quarenta e três Convocados removidos em períodos diferentes, sempre com a mesma justificativa codificada: "risco de informação não autorizada." Sempre porque haviam sabido alguma coisa que não deveriam saber.
+
+**Contexto (Nível 1):** O número da lista do Bonde é menor que o número equivalente de Aetherion. Muito menor. Os que sabem de ambas as listas não dormem bem.
+
+**Contexto (Nível 2):** As três linhas em Runa-Arché não são anotação de rodapé no sentido convencional. São as linhas que quem escreveu o arquivo original considerou mais importantes de todo o documento. A diferença entre o Nível 0 e o Nível 2 aqui não é política — é cosmológica.
+
 **Consequência:** Este evento abre o Arco 2 — A Escalada. É o ponto de não-retorno narrativo. O Conselho e a Gestão vão perceber que o arquivo foi acessado. A partir daqui, o jogador está em risco permanente dentro de sua própria facção.
+
+**Nota:** O mesmo arquivo foi descoberto por Varen aos 19 anos. A câmara estava destrancada por acaso de calibração. O sistema não foi projetado para manter essa câmara acessível — mas sistemas sem manutenção produzem falhas que nenhum projetista antecipou. Kobi provavelmente teria considerado isso irônico.
+
+---
+
+---
+
+## Arco 2 — A Escalada
+*Gradus 15+. Sem facção fixa. Jötunroc e Bifrost Inferior.*
+
+O jogador carrega o arquivo. Os grupos que querem sua localização multiplicam. O conhecimento das coordenadas é o que os dois deuses não podem permitir que se espalhe livremente — porque leva ao terminal raiz, que reconhece mortais como administradores.
+
+O arco 2 não tem missão única. Tem sequência de decisões que determinam como a escalada acontece e com quem.
+
+---
+
+### 2.1 — O Corredor que Não Está no Mapa
+**"A entrada"**
+`Gradus 15+ · Bifrost Inferior · Missão de exploração`
+
+**Contexto (Nível 0):** As coordenadas do arquivo apontam para dentro da Jötunroc. Mas a Jötunroc é intransponível. A menos que haja uma entrada que nenhum mapa oficial registra.
+
+**Objetivos:**
+- Localizar o corredor não documentado no Bifrost Inferior
+- Chegar a cinquenta metros de profundidade
+- Documentar os primeiros Eidolon
+
+**O que você encontra:** A escuridão que suga luz. A fonte de mana perde intensidade. Eidolon como sombras de pessoas executando atos sem público. Cinquenta metros é o limite sem equipamento e parceiro.
+
+**Contexto (Nível 1):** Os Eidolon não são fantasmas. São padrões de comportamento que ficaram quando Kobi morreu, executando sem que ninguém esteja administrando. Aparecem em regiões com alta concentração de Runa-Arché ativo. Seguem quem carrega intenção genuína.
+
+**Recompensa:** Localização da entrada confirmada. Acesso ao Arco 2.2.
+
+---
+
+### 2.2 — A Câmara
+**"O sistema"**
+`Gradus 16+ · Interior da Jötunroc · Missão de contato com o sistema`
+
+**Condição:** Missão 2.1 completada. Equipamento adequado. Parceiro (NPC ou outro jogador).
+
+**O que acontece:** A câmara é maior do que a entrada sugere. No centro, uma forma sem geometria definida — mas com presença. Inscrições em Runa-Arché completo no chão.
+
+**A decisão central:** Tocar ou não tocar.
+
+**Se tocar:**
+- O sistema reconhece o jogador como administrador
+- O Tridente torna-se acessível — não fisicamente, mas em sentido que o jogador sente em vez de vê
+- O sistema exibe os comandos disponíveis: Bifurcum, Conflatio, Damnatio, e os não documentados
+- O sexto comando está listado. Não tem descrição. Apenas o nome.
+
+**Contexto (Nível 1):** "Mortais podem ser usuários. Mas o sistema acabou de tratar a gente como administrador. Pode ser que mortal *é* o administrador desde o começo. Pode ser que os deuses estiveram mentindo sobre quem o sistema deveria reconhecer."
+
+**Contexto (Nível 2):** Os Eidolon tornam-se mais nítidos após o contato. O sistema está processando o que aconteceu. Em visitas subsequentes, as inscrições mudam para refletir o que o jogador fez ou deixou de fazer.
+
+**Nota:** A câmara é onde o Tridente foi escondido — não porque Kobi o escondeu para proteger, mas porque colocou no único lugar que o sistema deixaria acessível apenas a quem o sistema reconhecesse como legítimo. A legitimidade não é de sangue, não é de facção. É de intenção.
+
+---
+
+### 2.3 — A Divulgação
+**"O que fazer com o que você sabe"**
+`Gradus 17+ · Ambos os lados · Missão de consequência permanente`
+
+**Contexto (Nível 0):** Você sabe como o sistema funciona. Sabe que os deuses não podem usar o Tridente diretamente. Sabe que o Pleito é farsa administrada. O que você faz com esse conhecimento define o Arco 3.
+
+**Opções (cada uma com consequências permanentes):**
+1. **Suprimir** — não divulgar. Viver com o conhecimento. Manter status na própria facção. Perder acesso a missões de Nível 2 futuras.
+2. **Entregar a um lado** — dar o arquivo completo a Molusk ou Bolzarius. Ganho imediato de posição. Custo: o arquivo é suprimido, o sistema retorna ao status quo, e o jogador passa a ser rastreado de perto.
+3. **Divulgar estrategicamente** — para grupos com posição de pressionar internamente. Cria facções dentro das facções. Caos lento em vez de caos rápido. Potencial de mudança estrutural sem colapso.
+4. **Divulgar publicamente** — para o servidor inteiro. Máximo de impacto imediato. Máximo de risco. Os dois deuses priorizam eliminação do divulgador.
+
+**Contexto (Nível 2):** A opção 3 é o que Varen e Eira escolheram. Resultado: adaptação parcial. "A forma menos satisfatória de mudança que existia. Não tinha nem o calor do triunfo nem o conforto do imobilismo. Tinha o suor."
+
+**Recompensa estrutural:** Este é o ponto onde o estado do servidor muda permanentemente com base na decisão acumulada dos jogadores. Cada escolha pesa na configuração do mundo.
 
 ---
 
