@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 import {
-  PLAYER_SPEED, TILE_SIZE, SPRITE_FRAMES,
+  PLAYER_SPEED, TILE_SIZE,
   PLAYER_MAX_HP, ATTACK_COOLDOWN, ATTACK_RANGE, PLAYER_IFRAMES,
   xpForNextLevel,
 } from '../constants.js'
@@ -11,10 +11,11 @@ export default class Player {
     const x = col * TILE_SIZE + TILE_SIZE / 2
     const y = row * TILE_SIZE + TILE_SIZE / 2
 
-    this.sprite = scene.physics.add.sprite(x, y, 'chars01')
-    this.sprite.setFrame(SPRITE_FRAMES.PLAYER)
+    this.sprite = scene.physics.add.sprite(x, y, 'corvo', 'cs0')
     this.sprite.setDepth(10)
-    this.sprite.body.setSize(18, 18)
+    // Body is a small box at the character's lower-center (sprite is 64×64)
+    this.sprite.body.setSize(24, 20)
+    this.sprite.body.setOffset(20, 36)
     this.sprite.body.setCollideWorldBounds(true)
 
     // Stats
@@ -68,11 +69,11 @@ export default class Player {
     if (vy > 0) { this._facing = 's' }
 
     if (vx !== 0 || vy !== 0) {
-      const anim = (this._facing === 'n') ? 'walk-n' : 'walk-s'
+      const anim = (this._facing === 'n') ? 'corvo-n' : 'corvo-s'
       this.sprite.play(anim, true)
     } else {
       this.sprite.stop()
-      this.sprite.setFrame(SPRITE_FRAMES.PLAYER)
+      this.sprite.setFrame('cs0')
     }
   }
 

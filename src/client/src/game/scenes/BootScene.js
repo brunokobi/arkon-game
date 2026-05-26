@@ -10,6 +10,7 @@ export default class BootScene extends Phaser.Scene {
     this.load.spritesheet('walls',    'assets/sprites/otsp_walls_01.png',    { frameWidth: 32, frameHeight: 32 })
     this.load.spritesheet('chars01',  'assets/sprites/otsp_creatures_01.png', { frameWidth: 32, frameHeight: 32 })
     this.load.spritesheet('chars02',  'assets/sprites/otsp_creatures_02.png', { frameWidth: 32, frameHeight: 32 })
+    this.load.image('corvo',          'assets/sprites/corvo_alpha.png')
     this.load.audio('bifrost-music',  'assets/dark-fallout.ogg')
   }
 
@@ -64,18 +65,35 @@ export default class BootScene extends Phaser.Scene {
   }
 
   _createAnimations() {
-    // South / east walk — flipX for west
+    // ── Corvo character — custom 64×64 frames ──────────────────────────────────
+    const tex = this.textures.get('corvo')
+    // South frames (face visible, front view)
+    tex.add('cs0', 0,   0, 224, 64, 64)  // idle south
+    tex.add('cs1', 0,  64, 224, 64, 64)  // walk south 1
+    tex.add('cs2', 0,   0, 288, 64, 64)  // walk south 2
+    // North frames (back to camera)
+    tex.add('cn0', 0, 128, 224, 64, 64)  // idle north
+    tex.add('cn1', 0, 192, 224, 64, 64)  // walk north 1
+    tex.add('cn2', 0, 128, 288, 64, 64)  // walk north 2
+
     this.anims.create({
-      key: 'walk-s',
-      frames: this.anims.generateFrameNumbers('chars01', { frames: [32, 33, 34] }),
-      frameRate: 8,
+      key: 'corvo-s',
+      frames: [
+        { key: 'corvo', frame: 'cs0' },
+        { key: 'corvo', frame: 'cs1' },
+        { key: 'corvo', frame: 'cs2' },
+      ],
+      frameRate: 7,
       repeat: -1,
     })
-    // North walk (knight facing away from camera)
     this.anims.create({
-      key: 'walk-n',
-      frames: this.anims.generateFrameNumbers('chars01', { frames: [38, 39, 40] }),
-      frameRate: 8,
+      key: 'corvo-n',
+      frames: [
+        { key: 'corvo', frame: 'cn0' },
+        { key: 'corvo', frame: 'cn1' },
+        { key: 'corvo', frame: 'cn2' },
+      ],
+      frameRate: 7,
       repeat: -1,
     })
   }
