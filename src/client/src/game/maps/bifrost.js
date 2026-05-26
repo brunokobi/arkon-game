@@ -101,4 +101,5 @@ export const ZONE = {
     exit:  288,  // mármore claro
   },
   manaParticle: 0xff6600,  // laranja
+  enemies: [],
 }

@@ -208,6 +208,64 @@
   100% { opacity: 0; }
 }
 
+/* ── HUD right column ──────────────────────────────────────────────────────── */
+.gc-hud-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+/* ── Vitals (HP + XP) ──────────────────────────────────────────────────────── */
+.gc-vitals { display: flex; flex-direction: column; gap: 4px; width: 160px; }
+
+.gc-bar { display: flex; align-items: center; gap: 6px; }
+
+.gc-bar-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.gc-bar-fill { height: 100%; border-radius: 2px; transition: width 0.18s ease; }
+
+.gc-bar-fill--hp {
+  background: linear-gradient(90deg, #cc2200, #ff4422);
+  box-shadow: 0 0 4px rgba(255,50,0,0.5);
+}
+
+.gc-bar-fill--xp {
+  background: linear-gradient(90deg, #b89000, #ffcc00);
+  box-shadow: 0 0 4px rgba(255,200,0,0.4);
+}
+
+.gc-bar-label {
+  font-size: 8px;
+  color: rgba(200,169,110,0.6);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  min-width: 48px;
+  text-align: right;
+}
+
+.gc-bar-label--xp { color: rgba(255,200,80,0.55); }
+
+/* ── Morte overlay ─────────────────────────────────────────────────────────── */
+.gc-died {
+  position: fixed; inset: 0;
+  background: rgba(180,0,0,0.35);
+  z-index: 400; pointer-events: none;
+  animation: gc-died-flash 1.3s ease forwards;
+}
+@keyframes gc-died-flash {
+  0%   { opacity: 0; }
+  20%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 /* ── Back button ───────────────────────────────────────────────────────────── */
 .gc-back-btn {
   position: fixed;

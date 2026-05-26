@@ -124,4 +124,7 @@ export const ZONE = {
     exit:  284,  // pedra bruta escura — passagem para o Bifrost
   },
   manaParticle: 0xffdd44,  // amarelo-dourado (contraste sobre o chão laranja)
+  enemies: [
+    { type: 'manaphis', count: 7 },
+  ],
 }

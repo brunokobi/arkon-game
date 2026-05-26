@@ -39,3 +39,22 @@ export const COLORS = {
 
 export const PLAYER_SPEED   = 160
 export const INTERACT_DIST  = 48   // pixels, distance to show interact hint
+
+// ── Combate ───────────────────────────────────────────────────────────────────
+export const PLAYER_MAX_HP     = 100
+export const PLAYER_DAMAGE     = 22    // dano por ataque de espada
+export const ATTACK_COOLDOWN   = 550   // ms entre ataques
+export const ATTACK_RANGE      = 34    // px à frente do jogador (hitbox melee)
+export const PLAYER_IFRAMES    = 800   // ms de invulnerabilidade após levar dano
+
+export const MANAPHIS_HP       = 30
+export const MANAPHIS_DAMAGE   = 8
+export const MANAPHIS_XP       = 12
+export const MANAPHIS_SPEED    = 65
+export const ENEMY_CHASE_RANGE = 115   // px — distância para começar a perseguir
+export const ENEMY_ATTACK_DIST = 18    // px — distância para causar dano
+
+// XP necessário para subir do Gradus N para N+1
+export function xpForNextLevel(level) {
+  return Math.floor(60 * Math.pow(level, 1.4))
+}

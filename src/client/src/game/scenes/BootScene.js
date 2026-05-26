@@ -39,6 +39,15 @@ export default class BootScene extends Phaser.Scene {
     hint.generateTexture('hint_e', 20, 20)
     hint.destroy()
 
+    // ── Manaphis — orbe de mana laranja ──────────────────────────────────────
+    const m = this.make.graphics({ add: false })
+    m.fillStyle(0xaa2200, 1);  m.fillCircle(10, 10, 10)
+    m.fillStyle(0xff5500, 1);  m.fillCircle(10, 10,  7)
+    m.fillStyle(0xff9922, 1);  m.fillCircle(10, 10,  4)
+    m.fillStyle(0xffdd88, 1);  m.fillCircle(10, 10,  2)
+    m.generateTexture('manaphis', 20, 20)
+    m.destroy()
+
     // ── Vignette — radial gradient, transparent center → dark edges ──────────
     const W = 800, H = 560
     const vc = document.createElement('canvas')
