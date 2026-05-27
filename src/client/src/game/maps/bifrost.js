@@ -1,5 +1,28 @@
 import { TILE } from '../constants.js'
 
+// Frame indices in bifrost_sprites.png (frameWidth=32, frameHeight=32)
+export const BF = {
+  // Terrain
+  FLOOR:       0,
+  FLOOR_B:     1,
+  MANA_PULSE:  2,
+  WALL:        3,
+  WALL_B:      4,
+  WALL_C:      5,
+  PATH_WOOD:   6,
+  PATH_IRON:   7,
+  // Items
+  POTION:      8,
+  MANA_SHARD:  9,
+  DARK_FRUIT:  10,
+  HAT:         11,
+  DAGGER:      12,
+  GRATE:       13,
+  BOOK_I:      14,
+  RUNE_FRAG:   15,
+  TERM_FRAG:   16,
+}
+
 const W = TILE
 export const MAP_W = 52
 export const MAP_H = 26
@@ -94,12 +117,13 @@ export const ZONE = {
   exits: BIFROST_EXITS,
   spawn: PLAYER_SPAWN,
   music: 'bifrost-music',
+  tileSheet: 'bftiles',
   tiles: {
-    floor: 224,  // pedra cinza arredondada (chão de dungeon)
-    wall:  192,  // terra marrom escura
-    mana:  304,  // tile azul (zona de mana)
-    exit:  288,  // mármore claro
+    floor: BF.FLOOR,
+    wall:  BF.WALL,
+    mana:  BF.MANA_PULSE,
+    exit:  BF.PATH_WOOD,
   },
-  manaParticle: 0xff6600,  // laranja
+  manaParticle: 0x44ccff,  // azul
   enemies: [],
 }

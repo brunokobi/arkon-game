@@ -108,15 +108,16 @@ export default class WorldScene extends Phaser.Scene {
   // ── Tile rendering ─────────────────────────────────────────────────────────
 
   _renderTile(tileId, cx, cy) {
-    const t = this._zone.tiles
+    const t     = this._zone.tiles
+    const sheet = this._zone.tileSheet ?? 'tiles'
     if (tileId === TILE.WALL) {
-      this.add.image(cx, cy, 'tiles', t.wall).setDepth(0)
+      this.add.image(cx, cy, sheet, t.wall).setDepth(0)
     } else if (tileId === TILE.MANA_FLOOR) {
-      this.add.image(cx, cy, 'tiles', t.mana).setDepth(0)
+      this.add.image(cx, cy, sheet, t.mana).setDepth(0)
     } else if (tileId === TILE.EXIT_WEST || tileId === TILE.EXIT_EAST) {
-      this.add.image(cx, cy, 'tiles', t.exit).setDepth(0)
+      this.add.image(cx, cy, sheet, t.exit).setDepth(0)
     } else {
-      this.add.image(cx, cy, 'tiles', t.floor).setDepth(0)
+      this.add.image(cx, cy, sheet, t.floor).setDepth(0)
     }
   }
 

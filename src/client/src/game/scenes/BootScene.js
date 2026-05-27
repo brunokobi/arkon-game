@@ -10,6 +10,7 @@ export default class BootScene extends Phaser.Scene {
     this.load.spritesheet('walls',    'assets/sprites/otsp_walls_01.png',    { frameWidth: 32, frameHeight: 32 })
     this.load.spritesheet('chars01',  'assets/sprites/otsp_creatures_01.png', { frameWidth: 32, frameHeight: 32 })
     this.load.spritesheet('chars02',  'assets/sprites/otsp_creatures_02.png', { frameWidth: 32, frameHeight: 32 })
+    this.load.spritesheet('bftiles',  'assets/sprites/bifrost_sprites.png',   { frameWidth: 32, frameHeight: 32 })
     this.load.image('corvo',          'assets/sprites/corvo_alpha.png')
     this.load.audio('bifrost-music',  'assets/dark-fallout.ogg')
   }
