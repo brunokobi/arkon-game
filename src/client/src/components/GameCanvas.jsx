@@ -3,7 +3,7 @@ import Phaser from 'phaser'
 import { createPhaserConfig } from '../game/config.js'
 import './GameCanvas.css'
 
-export default function GameCanvas({ player, onBack }) {
+export default function GameCanvas({ player, character = 'varen', onBack }) {
   const containerRef = useRef(null)
   const gameRef      = useRef(null)
 
@@ -16,7 +16,7 @@ export default function GameCanvas({ player, onBack }) {
   // ── Bootstrap Phaser ───────────────────────────────────────────────────────
   useEffect(() => {
     if (!containerRef.current || gameRef.current) return
-    const game = new Phaser.Game(createPhaserConfig(containerRef.current))
+    const game = new Phaser.Game(createPhaserConfig(containerRef.current, character))
     gameRef.current = game
 
     game.events.on('zone-enter',    ({ name }) => setZoneName(name))

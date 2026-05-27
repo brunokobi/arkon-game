@@ -50,7 +50,8 @@ export default class WorldScene extends Phaser.Scene {
     this._spawnManaParticles(map, mapW, mapH)
 
     // ── 3. Player ─────────────────────────────────────────────────────────────
-    this.player = new Player(this, spawnPos.col, spawnPos.row)
+    const character = this.game.registry.get('character') ?? 'varen'
+    this.player = new Player(this, spawnPos.col, spawnPos.row, character)
     this.physics.add.collider(this.player.sprite, this.wallGroup)
 
     // ── 4. NPCs ───────────────────────────────────────────────────────────────

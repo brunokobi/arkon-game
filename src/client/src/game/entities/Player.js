@@ -6,7 +6,7 @@ import {
 } from '../constants.js'
 
 export default class Player {
-  constructor(scene, col, row) {
+  constructor(scene, col, row, character = 'varen') {
     this._scene = scene
     const x = col * TILE_SIZE + TILE_SIZE / 2
     const y = row * TILE_SIZE + TILE_SIZE / 2
@@ -17,6 +17,9 @@ export default class Player {
     this.sprite.body.setSize(24, 20)
     this.sprite.body.setOffset(20, 36)
     this.sprite.body.setCollideWorldBounds(true)
+
+    // Eira = silver-blue tint to distinguish from Varen
+    if (character === 'eira') this.sprite.setTint(0xaaddff)
 
     // Stats
     this.hp    = PLAYER_MAX_HP
