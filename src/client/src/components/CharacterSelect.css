@@ -36,7 +36,7 @@
   align-items: center;
   gap: 20px;
   width: 100%;
-  max-width: 900px;
+  max-width: 860px;
   padding: 0 24px;
 }
 
@@ -106,37 +106,55 @@
 .cs-card-portrait-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 1.15 / 1;
+  /* taller portrait so the full face is visible */
+  aspect-ratio: 1 / 1;
   overflow: hidden;
+  background: #0a0a14;
 }
 .cs-card-portrait {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  /* shift view down slightly so face fills the frame, not the forehead */
+  object-position: center 20%;
   display: block;
   filter: saturate(0.85) brightness(0.9);
-  transition: filter 0.2s;
+  transition: filter 0.2s, transform 0.3s;
+  transform: scale(1.05);
+  transform-origin: center 20%;
 }
 .cs-card--hover .cs-card-portrait,
 .cs-card--selected .cs-card-portrait {
-  filter: saturate(1) brightness(1);
+  filter: saturate(1) brightness(1.05);
+  transform: scale(1.08);
 }
 .cs-card-portrait--blue {
   filter: saturate(0.75) hue-rotate(30deg) brightness(0.9);
 }
 .cs-card--hover .cs-card-portrait--blue,
 .cs-card--selected .cs-card-portrait--blue {
-  filter: saturate(1.1) hue-rotate(15deg) brightness(1);
+  filter: saturate(1.1) hue-rotate(15deg) brightness(1.05);
 }
 
-/* Gold bottom gradient over portrait */
+/* Bottom gradient fades portrait into card body */
 .cs-card-portrait-wrap::after {
   content: '';
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  height: 50%;
-  background: linear-gradient(to top, rgba(5,5,8,0.95) 0%, transparent 100%);
+  height: 55%;
+  background: linear-gradient(to top, rgba(5,5,8,1) 0%, rgba(5,5,8,0.4) 55%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Subtle top vignette */
+.cs-card-portrait-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 30%;
+  background: linear-gradient(to bottom, rgba(5,5,8,0.4) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .cs-card-rune-badge {
@@ -150,15 +168,16 @@
 
 /* ── Info ── */
 .cs-card-info {
-  padding: 14px 18px 18px;
+  padding: 16px 20px 20px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
 }
 .cs-card-name {
   font-size: 14px;
   letter-spacing: 2px;
   color: #e8d5a3;
+  line-height: 1.2;
 }
 .cs-card-title {
   font-size: 10px;
@@ -175,9 +194,9 @@
   margin-bottom: 4px;
 }
 .cs-card-desc {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   font-size: 11px;
-  line-height: 1.65;
+  line-height: 1.7;
   color: rgba(208,192,160,0.75);
   font-style: italic;
 }
@@ -186,12 +205,12 @@
 .cs-card-stats {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
 }
 .cs-stat {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 .cs-stat-label {
   font-size: 8px;
@@ -204,17 +223,17 @@
   gap: 3px;
 }
 .cs-stat-pip {
-  width: 14px;
+  width: 16px;
   height: 4px;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(200,169,110,0.12);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(200,169,110,0.10);
   border-radius: 1px;
   transition: background 0.15s;
 }
 .cs-stat-pip--on {
-  background: rgba(240,192,80,0.55);
-  border-color: rgba(240,192,80,0.35);
-  box-shadow: 0 0 4px rgba(240,168,0,0.3);
+  background: rgba(240,192,80,0.6);
+  border-color: rgba(240,192,80,0.4);
+  box-shadow: 0 0 5px rgba(240,168,0,0.35);
 }
 
 /* ── Selected checkmark ── */
@@ -224,7 +243,6 @@
   left: 12px;
   font-size: 14px;
   color: #f0c050;
-  font-style: normal;
   z-index: 2;
 }
 
@@ -237,7 +255,7 @@
   font-family: 'Courier New', Courier, monospace;
   font-size: 11px;
   letter-spacing: 3px;
-  padding: 10px 32px;
+  padding: 11px 36px;
   cursor: default;
   border-radius: 2px;
   transition: all 0.2s;
@@ -250,5 +268,5 @@
 }
 .cs-confirm-btn--ready:hover {
   background: rgba(240,192,80,0.1);
-  box-shadow: 0 0 20px rgba(240,168,0,0.15);
+  box-shadow: 0 0 24px rgba(240,168,0,0.18);
 }
